@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="fragments/header :: header">
+  <!--<head>-->
+  <title>Hello</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+  function closePopup(){
+    alert("종료")
+    window.close();
+    }
+</script>
+<body>
+<div class="container">
+  <div th:replace="fragments/bodyHeader :: bodyHeader" />
+  <div class="jumbotron">
+    <form name="form01" id="form01" method="post" onsubmit="return false;">
+      <p class="lead">팝업테스트 </p>
+    <p>
+        <button id="btnClose" type="submit" class="btn btn-lg btn-info" onClick="closePopup(event)">팝업종료</button>
+    </p>
+    </form>
+  </div>
+  <div th:replace="fragments/footer :: footer" /> </div> <!-- /container -->
+</div>
+
+
+</body>
+</html>
+
+
+

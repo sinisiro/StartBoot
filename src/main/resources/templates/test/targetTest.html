@@ -1,0 +1,21 @@
+<style>
+  .upper{
+    background:gold;
+    width:80px;
+    text-align:center;
+  }
+  .lower{
+    background:pink;
+    width:50px;
+  }
+</style>
+<script>
+  function clicked(event){
+    alert(event.currentTarget.getAttribute('id')+" clicked");
+  }
+</script>
+<div class="upper" onClick="clicked(event)" id="div">
+  <span class="lower" id="span">
+    span
+  </span>
+</div>

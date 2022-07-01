@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <!--<head>-->
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+<form name="form01" id="form01" method="post" onsubmit="return false;">
+    <script type="text/javascript" src="../static/native/native.js"></script>
+    <div class="container">
+        <div th:replace="fragments/bodyHeader :: bodyHeader" />
+        <div class="jumbotron"> <h1>Native Call</h1>
+            <p class="lead">통신</p>
+            <button id="btnNativeCall" type="submit" class="btn btn-sm btn-secondary">Native Call</button>
+            <button id="btnCapture" type="submit" class="btn btn-sm btn-secondary">캡처방지</button>
+            </p>
+            <p>
+            <button id="btnAppInit" type="submit" class="btn btn-sm btn-danger">앱초기화</button>
+            <button id="btnAppFirst" type="submit" class="btn btn-sm btn-dark">앱첫사용여부</button>
+            </p>
+            <p class="lead">페이지 이동</p>
+            <p>
+                <button id="btnMove" type="submit" class="btn btn-lg btn-info">홈으로 이동</button>
+                <button id="btnBack" type="submit" class="btn btn-lg btn-info">뒤로가기</button>
+            </p>
+
+            <p class="lead">DB 접근</p>
+            <p>
+                <button id="btnFetch" type="submit" class="btn btn-lg btn-info">select</button>
+                <button id="btnTest" type="submit" class="btn btn-lg btn-info">Json 테스트</button>
+
+            </p>
+
+
+        </div>
+        <div th:replace="fragments/footer :: footer" /> </div> <!-- /container -->
+</form>
+</body>
+</html>

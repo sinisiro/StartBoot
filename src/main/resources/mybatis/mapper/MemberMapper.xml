@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 레포지토리와 연결해 주는 부분 -->
+<mapper namespace="com.sinisiro.StartBoot.webview.repository.MybatisRepository">
+
+    <select id="getMember" resultType="java.util.HashMap">
+        SELECT * FROM Member;
+    </select>
+
+    <insert id="insertCaptureLog" parameterType="com.sinisiro.StartBoot.webview.domain.CaptureLog">
+        insert into CAPTURE_LOG(LOG_DATE, LOG_TIME, SCREEN_ID) values(#{logDate},#{logTime},#{screenId});
+    </insert>
+</mapper>

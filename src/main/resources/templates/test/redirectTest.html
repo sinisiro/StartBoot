@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--<head th:replace="fragments/header :: header">-->
+<!--  &lt;!&ndash;<head>&ndash;&gt;-->
+<!--  <title>Hello</title>-->
+<!--  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />-->
+
+<!--</head>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<body>
+<form id="frm" name="frm" action="http://localhost:8090/redirectTarget" method="POST">
+    <script type="text/javascript" src="../static/test/test.js"></script>
+
+    <input type="text" id="param1" name="param1" th:value="${param1}">
+    <input type="text" id="param2" name="param2" th:value="${param2}">
+
+</form>
+</body>
+</html>
+
+
+

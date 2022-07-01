@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <!--<head>-->
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+<form name="form01" id="form01" method="post" onsubmit="return false;">
+    <script type="text/javascript" src="../static/native/home.js"></script>
+    <div class="container">
+        <div th:replace="fragments/bodyHeader :: bodyHeader" />
+        <div class="jumbotron"> <h1>메인페이지</h1>
+            <p class="lead">테스트</p>
+            <button id="btnNative" type="submit" class="btn btn-sm btn-danger">네이티브테스트</button>
+            </p>
+
+        </div>
+        <div th:replace="fragments/footer :: footer" /> </div> <!-- /container -->
+</form>
+</body>
+</html>

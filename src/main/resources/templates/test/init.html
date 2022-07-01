@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <!--<head>-->
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+<form name="form01" id="form01" method="post" onsubmit="return false;">
+    <script type="text/javascript" src="../static/test/init.js"></script>
+    <div class="container">
+        <div th:replace="fragments/bodyHeader :: bodyHeader" />
+        <p><a href="/test/fileUploadForm">파일첨부</a></p>
+        <!--    <p><a href="/test/fileUploadRest">파일첨부Rest</a></p>-->
+        변수 : <input type="text" id="val" name="val" class="inp-base" value="140101" placeholder="전송데이터">
+        <div class="jumbotron"> <h1>HELLO MS</h1>
+            <p class="lead">통신</p>
+            <button id="btnServer" type="submit" class="btn btn-lg btn-secondary">서버 통신</button>
+            <button id="btnAjax" type="submit" class="btn btn-lg btn-dark">Ajax 통신</button>
+            </p>
+            <p class="lead">타 서버호출 </p>
+            <p>
+                <button id="btnCors" type="submit" class="btn btn-lg btn-info">Cors 처리</button>
+                <button id="btnCors2" type="submit" class="btn btn-lg btn-info">Cors 처리2</button>
+            </p>
+            <p class="lead">암호화 </p>
+
+            <!--        <select id="gubun">-->
+            <!--            <option value="enc" selected>암호화-->
+            <!--            <option value="dec" >복호화-->
+            <!--        </select>-->
+
+            암호화 <input type="radio" name="gubun" value="enc" checked />
+            복호화 <input type="radio" name="gubun" value="dec" />
+
+
+            <p>
+                <!--            <textarea id="plain" cols="50" rows="3"></textarea>-->
+                <!--            <textarea id="result" cols="50" rows="3"></textarea>-->
+                <a href="#" onclick="change()">입력/결과바꾸기</a><br>
+                입력: <input text type="text" id="plain" name="plasn" class="inp-base"    size="30" value="" placeholder="입력"><br>
+                결과 :<input type="text" id="result" name="result" class="inp-base"  size="30" value="" placeholder="결과"></p>
+            <p>
+                <button id="btnCrypt" type="submit" class="btn btn-lg btn-info">AES256</button>
+                <button id="btnBase64" type="submit" class="btn btn-lg btn-primary">BASE64</button>
+                <button id="btnAESBase" type="submit" class=" btn-lg btn-primary">AES+BASE</button>
+            </p>
+
+            <p class="lead">팝업테스트 </p>
+            <p>
+                <button id="btnPopup" type="submit" class="btn btn-lg btn-info">팝업</button>
+                <button id="btnClick" type="submit" class="btn btn-lg btn-info">클릭테스트</button>
+            </p>
+
+            <!--        <p class="lead">상품 기능</p> <p>-->
+            <!--            <a class="btn btn-lg btn-dark" href="/items/new">상품 등록</a>-->
+            <!--            <a class="btn btn-lg btn-dark" href="/items">상품 목록</a> </p>-->
+            <!--        <p class="lead">주문 기능</p> <p>-->
+            <!--            <a class="btn btn-lg btn-info" href="/order">상품 주문</a>-->
+            <!--            <a class="btn btn-lg btn-info" href="/orders">주문 내역</a> </p>-->
+        </div>
+        <div th:replace="fragments/footer :: footer" /> </div> <!-- /container -->
+</form>
+</body>
+</html>

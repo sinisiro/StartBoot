@@ -1,4 +1,4 @@
-package com.example.StartBoot;
+package com.sinisiro.StartBoot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
