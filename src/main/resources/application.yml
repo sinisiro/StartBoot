@@ -39,7 +39,7 @@ spring:
     suffix: .html
 
 server:
-  port: 80
+  port: 443
 
 
 mybatis:
