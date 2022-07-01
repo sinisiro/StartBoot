@@ -38,8 +38,8 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
 
-server:
-  port: 443
+#server:
+#  port: 443
 
 
 mybatis:

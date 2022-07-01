@@ -38,6 +38,6 @@ test {
 }
 
 
-bootJar {
-	destinationDirectory = file("./target")
+jar {
+	enabled = false
 }
