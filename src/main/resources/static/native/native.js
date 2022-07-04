@@ -44,6 +44,7 @@ $(document).ready(function(){
         history.back();
     });
 
+    //member에 초기 들어가있는 자료롤 가져온다.
     $("#btnFetch").click(function(){
         $.post("/native/dbAccess", {
         }, function(data) {
@@ -52,6 +53,31 @@ $(document).ready(function(){
         }, 'json');
 
     });
+
+    $("#btnBio").click(function(){
+
+        var plan_no = "108018100520017";
+        var cust_no ="1";
+        var age= "40";
+        var sex = "1";
+
+
+        var url = "";
+        url += "dongbusign://aerox";
+        url += "?serviceID= "+ plan_no;
+        url += "&custNo ="+ cust_no;
+        url += "&serverPublicKeyVer =";
+        url += "&serverPublicKey =";
+        url += "&ins_plhd_dvn =";
+        url += "&ment ="
+        url += "&userAge =" + age;
+        url += "&userSex ="+sex;
+        url += "&BIO_SIG_TOKEN_NO = testToken";
+
+        location.href = url;
+
+    });
+
 
 //natvie->서버 json 전송 테스트
     $("#btnTest").click(function(){
