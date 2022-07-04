@@ -75,10 +75,10 @@ public class NativeController {
 
 
     //앱 <-> 네이티브 테스트
-    @RequestMapping(value="/AppCall")
+    @RequestMapping(value="/appCall")
     public String AppCall(ModelAndView mav, HttpServletRequest req, HttpServletResponse res){
 
-        return "native/AppCall";
+        return "native/appCall";
     }
 
 }

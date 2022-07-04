@@ -55,9 +55,9 @@ $(document).ready(function(){
     });
 
     $("#btnBioMove").click(function(){
-        $("#form01").attr("action","/appCall");
+        $("#form01").attr("action","/native/appCall");
           form01.submit();
-    }
+    });
 
 
 
