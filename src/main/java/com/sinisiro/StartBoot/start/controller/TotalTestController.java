@@ -35,7 +35,7 @@ public class TotalTestController {
 
 
 
-        log.info("=[앱이 시작되었습니다]= "+ LocalDate.now() + formatedNow);
+        log.info("=[앱이 시작되었습니다]= ["+ LocalDate.now() +" " + formatedNow +"]");
         return "test/init";
     }
     //앱 <-> 네이티브 테스트
