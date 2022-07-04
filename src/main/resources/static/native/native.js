@@ -56,6 +56,8 @@ $(document).ready(function(){
 
     $("#btnBio").click(function(){
 
+        console.log("앱 스키마 호출");
+
         var plan_no = "108018100520017";
         var cust_no ="1";
         var age= "40";
