@@ -65,7 +65,7 @@ $(document).ready(function(){
 
 
         var url = "";
-        url += "dongbusign://aerox";
+        url += "dongbuins://aerox";
         url += "?serviceID= "+ plan_no;
         url += "&custNo ="+ cust_no;
         url += "&serverPublicKeyVer =";
