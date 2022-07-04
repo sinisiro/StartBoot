@@ -40,6 +40,10 @@ $(document).ready(function(){
           form01.submit();
     });
 
+    $("#btnPopup").click(function(){
+        window.open("/native/appCall")
+    });
+
     $("#btnBack").click(function(){
         history.back();
     });
