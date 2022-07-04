@@ -23,6 +23,7 @@ public class TotalTestController {
     @RequestMapping(value="/init",  method = RequestMethod.GET)
     public String index(ModelAndView mav, HttpServletRequest req, HttpServletResponse res){
 
+        log.info("=====앱이 시작되었습니다====");
         return "test/init";
     }
     //앱 <-> 네이티브 테스트
