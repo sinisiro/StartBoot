@@ -11,6 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,7 +26,16 @@ public class TotalTestController {
     @RequestMapping(value="/init",  method = RequestMethod.GET)
     public String index(ModelAndView mav, HttpServletRequest req, HttpServletResponse res){
 
-        log.info("=====앱이 시작되었습니다====");
+        // 현재 시간
+        LocalTime now = LocalTime.now();
+        // 포맷 정의하기
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH시 mm분 ss초");
+        // 포맷 적용하기
+        String formatedNow = now.format(formatter);
+
+
+
+        log.info("=[앱이 시작되었습니다]= "+ LocalDate.now() + formatedNow);
         return "test/init";
     }
     //앱 <-> 네이티브 테스트
