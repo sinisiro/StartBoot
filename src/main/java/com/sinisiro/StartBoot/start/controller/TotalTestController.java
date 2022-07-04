@@ -36,7 +36,7 @@ public class TotalTestController {
 
 
         log.info("=[앱이 시작되었습니다]= ["+ LocalDate.now() +" " + formatedNow +"]");
-        return "test/init"; 
+        return "test/init";
     }
     //앱 <-> 네이티브 테스트
     @RequestMapping(value="/native",  method = RequestMethod.GET)
