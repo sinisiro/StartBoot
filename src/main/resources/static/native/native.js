@@ -45,6 +45,11 @@ $(document).ready(function(){
     });
 
     $("#btnFetch").click(function(){
+        $.post("/native/dbAccess", {
+        }, function(data) {
+            var json = JSON.stringify(data); //'{ID=1, BIRTH=830101, NAME=맹수}'
+            alert(json);
+        }, 'json');
 
     });
 

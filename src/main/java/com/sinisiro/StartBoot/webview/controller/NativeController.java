@@ -42,6 +42,7 @@ public class NativeController {
     public @ResponseBody List<Map<String, Object>> getMember() {
         log.info("dbAccess");
         log.info(nativeService.getMember().toString());
+
         return nativeService.getMember();
     }
 
