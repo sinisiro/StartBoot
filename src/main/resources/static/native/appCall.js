@@ -33,8 +33,8 @@ $(document).ready(function(){
 
         });
 
-    $("#btnBack").click(function(){
-        history.back();
+    $("#btnClose").click(function(){
+        window.close();
     });
 });
 
