@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+  <!--<head>-->
+  <title>Hello</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<form action="/test/fileUploadJson2" method="post" enctype="multipart/form-data">
+<div class="container">
+  <div th:replace="fragments/bodyHeader :: bodyHeader" />
+    <div class="form-group">
+      <input text type="text" id="senderName" name="senderName" class="inp-base" size="10" value="테스트부트" placeholder="입력">
+      <input multiple type="file" name="files" id="files">
+    </div>
+    <button type="submit">등록</button>
+</div> <!-- /container -->
+</form>
+   <div th:text="${fileName}">fileName</div>
+
+</body>
+<div th:replace="fragments/footer :: footer" /> </div> <!-- /container -->
+</html>

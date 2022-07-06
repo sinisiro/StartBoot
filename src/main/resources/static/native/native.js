@@ -63,7 +63,7 @@ $(document).ready(function(){
 //          form01.submit();
 //    });
 
-    $("#btnBioMove").click(function(){
+    $("#btnBioMove").attr("href",url)[0].click(function(){
 
             console.log("앱 스키마 호출");
 

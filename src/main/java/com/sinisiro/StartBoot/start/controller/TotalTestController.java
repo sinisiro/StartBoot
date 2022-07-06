@@ -2,19 +2,28 @@ package com.sinisiro.StartBoot.start.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.jni.FileInfo;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 @Controller
@@ -100,5 +109,107 @@ public class TotalTestController {
 
         return "test/targetTest";
     }
+
+
+    /**
+     * 파일업로드 샘플
+     테이블 : fileInfo
+     */
+
+    @RequestMapping(value="/fileUploadForm",  method = RequestMethod.GET)
+    public String fileuploadForm(ModelAndView mav, HttpServletRequest req, HttpServletResponse res){
+
+        return "test/fileUploadForm";
+    }
+
+    @RequestMapping(value="/fileUpload",  method = RequestMethod.POST)
+    public String uploadSingle(@RequestParam("files") MultipartFile file, Model model) throws Exception {
+//        String rootPath = FileSystemView.getFileSystemView().getHomeDirectory().toString();
+//        String basePath = rootPath + "/";
+//        String filePath = basePath + "/" + file.getOriginalFilename();
+//        File dest = new File(filePath);
+//
+//        log.info("rootPath:"+rootPath);
+//        log.info("basePath:"+basePath);
+//        log.info("filePath:"+filePath);
+//        log.info(System.getProperty("java.io.tmpdir"));
+//
+//
+//        file.transferTo(dest); // 파일 업로드 작업 수행
+
+        //2번째 방법
+        // DB 저장
+        //1. 디비 저장
+//        FileInfo fileInfo = new FileInfo();
+//        fileInfo.setFileNm(file.getOriginalFilename());
+
+        //2. 빌더 패턴으로 저장
+//        FileInfo fileInfo = FileInfo.builder()
+//                .fileNm(file.getOriginalFilename())
+//                .build();
+//
+//        totalTestRepository.save(fileInfo);
+
+        System.out.println("file name: " + file.getName());
+        System.out.println("file original name: " + file.getOriginalFilename());
+
+        String UPLOADED_FOLDER = "./upload/";
+        byte[] bytes = file.getBytes();
+        Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+        log.info(path.toString());
+        Files.write(path, bytes);
+
+        model.addAttribute("fileName", file.getOriginalFilename());
+
+
+        return "test/fileUploadForm";
+    }
+
+
+    @RequestMapping(value="/fileUploadJson",  method = RequestMethod.POST)
+    public @ResponseBody String uploadJson(@RequestParam("files") MultipartFile file,
+                                           @RequestParam("senderName") String senderName,
+                                           Model model) throws Exception {
+        log.info(senderName);
+//        String UPLOADED_FOLDER = "./upload/";
+//        byte[] bytes = file.getBytes();
+//        Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+//        log.info(path.toString());
+//        Files.write(path, bytes);
+//
+//        model.addAttribute("fileName", file.getOriginalFilename());
+
+
+        return "success";
+    }
+
+    //MultipartHttpServletRequest 로 파일 받기.
+    @RequestMapping(value="/fileUploadJson2",  method = RequestMethod.POST)
+    public @ResponseBody String uploadJson2(MultipartHttpServletRequest req,  HttpServletResponse res,
+                                            Model model) throws Exception {
+        log.info("request 로 전달받기");
+        System.out.println(req.getParameter("senderName"));
+        Iterator<String> iterator = req.getFileNames();
+        MultipartFile multipartFile = null;
+
+        while(iterator.hasNext()){
+            multipartFile = req.getFile(iterator.next());
+            System.out.println(multipartFile.getOriginalFilename());
+        }
+
+//        String UPLOADED_FOLDER = "./upload/";
+//        byte[] bytes = file.getBytes();
+//        Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+//        log.info(path.toString());
+//        Files.write(path, bytes);
+//
+//        model.addAttribute("fileName", file.getOriginalFilename());
+
+
+        return "success";
+    }
+
+
+
 
 }
