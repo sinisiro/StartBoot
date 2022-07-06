@@ -63,6 +63,7 @@ $(document).ready(function(){
 //          form01.submit();
 //    });
 
+
     $("#btnBioMove").click(function(){
 
             console.log("앱 스키마 호출");
@@ -85,7 +86,7 @@ $(document).ready(function(){
             url += "&userSex ="+sex;
             url += "&BIO_SIG_TOKEN_NO = testToken";
 
-            $("#btn_appCall").attr("href", url).click();
+			$("#btn_appCall").attr("href", url)[0].click();
 //            setTimeout(function(){
 //                location.href = url;
 //            },0);
