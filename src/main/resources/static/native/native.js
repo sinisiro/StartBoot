@@ -78,16 +78,16 @@ $(document).ready(function(){
 
             var url = "";
             url += "dongbusign://aerox";
-            url += "?serviceID= "+ plan_no;
-            url += "&custNo ="+ cust_no;
-            url += "&serverPublicKeyVer =";
-            url += "&serverPublicKey =";
-            url += "&ins_plhd_dvn =";
-            url += "&dvcd = 2";
+            url += "?serviceID="+ plan_no;
+            url += "&custNo="+ cust_no;
+            url += "&serverPublicKeyVer=";
+            url += "&serverPublicKey=";
+            url += "&ins_plhd_dvn=";
+            url += "&dvcd=2";
             url += "&ment ="
-            url += "&userAge =" + age;
-            url += "&userSex ="+sex;
-            url += "&BIO_SIG_TOKEN_NO = testToken";
+            url += "&userAge=" + age;
+            url += "&userSex="+sex;
+            url += "&BIO_SIG_TOKEN_NO=testToken";
 
 
 
