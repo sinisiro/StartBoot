@@ -74,6 +74,7 @@ $(document).ready(function(){
             var sex = "1";
 
 
+
             var url = "";
             url += "dongbusign://aerox";
             url += "?serviceID= "+ plan_no;
