@@ -66,6 +66,7 @@ $(document).ready(function(){
 
     $("#btnBioMove").click(function(){
 
+            alert("호출");
             console.log("앱 스키마 호출!!!!");
 
             var plan_no = "108018100520017";

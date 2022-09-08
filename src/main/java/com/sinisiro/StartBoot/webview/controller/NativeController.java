@@ -52,9 +52,10 @@ public class NativeController {
             @RequestParam("logDate") String logDate
             ,@RequestParam("logTime") String logTime
             ,@RequestParam("screenId") String screenId) {
-        log.info(logDate);
+
         log.info(logTime);
         log.info(screenId);
+        log.info(logDate);
 
 
         Map<String, Object> resultData = new HashMap<>();
