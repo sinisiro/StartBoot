@@ -86,10 +86,13 @@ $(document).ready(function(){
             url += "&userSex ="+sex;
             url += "&BIO_SIG_TOKEN_NO = testToken";
 
-			$("#btn_appCall").attr("href", url)[0].click();
-//            setTimeout(function(){
-//                location.href = url;
-//            },0);
+
+
+            setTimeout(function(){
+            //22.07 iOS 카카오 인앱에서 외부 앱 호출하면 인앱닫히는 현상 방지하기위함.
+            $("#btn_appCall").attr("href", url)[0].click();
+                location.href = url;
+            },0);
         });
 
 
@@ -102,7 +105,6 @@ $(document).ready(function(){
         Test(jsonObj);
 
     });
-
 
 
 });
@@ -189,9 +191,6 @@ function fn_authCallBack(res){
         alert("이미 동의하셨습니다");
         return false;
     }
-
-
-
 }
 
 
