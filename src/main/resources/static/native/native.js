@@ -83,6 +83,7 @@ $(document).ready(function(){
             url += "&serverPublicKeyVer =";
             url += "&serverPublicKey =";
             url += "&ins_plhd_dvn =";
+            url += "&dvcd = 2";
             url += "&ment ="
             url += "&userAge =" + age;
             url += "&userSex ="+sex;
