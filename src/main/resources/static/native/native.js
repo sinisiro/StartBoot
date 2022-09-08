@@ -44,6 +44,12 @@ $(document).ready(function(){
         window.open("/native/appCall")
     });
 
+    $("#btnUpload").click(function(){
+        $("#form01").attr("method","get");
+        $("#form01").attr("action","/test/fileUploadForm");
+          form01.submit();
+    });
+
     $("#btnBack").click(function(){
         history.back();
     });
