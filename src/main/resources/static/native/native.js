@@ -87,7 +87,7 @@ $(document).ready(function(){
             url += "&ment ="
             url += "&userAge=" + age;
             url += "&userSex="+sex;
-            url += "&BIO_SIG_TOKEN_NO=testToken";
+            url += "&BIO_SIG_TOKEN_NO=testTokens";
 
 
 
