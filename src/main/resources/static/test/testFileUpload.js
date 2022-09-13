@@ -11,4 +11,7 @@ $(document).ready(function(){
     });
 });
 
+function callBack(method){
+    alert(method+":callback 완료");
+}
 
