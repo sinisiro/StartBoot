@@ -6,7 +6,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<form action="/test/fileUploadJson2" method="post" enctype="multipart/form-data">
+<form action="/test/fileUploadJson2" name="form01" id="form01" method="post"  enctype="multipart/form-data">
+  <script type="text/javascript" src="../static/test/testFileUpload.js"></script>
 <div class="container">
   <div th:replace="fragments/bodyHeader :: bodyHeader" />
     <div class="form-group">
@@ -16,7 +17,7 @@
       사진촬영
       <input type="file" id="upload-image" multiple="multiple" data-role="none" size="10" accept="image/*" capture="camera">
     </div>
-    <button type="submit">등록</button>
+    <button id="btnClearTmp" type="submit">등록</button>
 </div> <!-- /container -->
 </form>
    <div th:text="${fileName}">fileName</div>

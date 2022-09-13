@@ -33,6 +33,12 @@ $(document).ready(function(){
         webkit.messageHandlers.callApp.postMessage(params);
     });
 
+    //22.09.13 임시폴더 초기화
+    $("#btnClearTmp").click(function(){
+        alert("hello")
+            var params = {header : { api: '133'}, body: {callBackFunc:  'callBack'}};
+            webkit.messageHandlers.callApp.postMessage(params);
+        });
 
 
     $("#btnMove").click(function(){
@@ -129,8 +135,8 @@ function Test(jsonObj){
 
 }
 
-function callBack(){
-    alert("callback 완료");
+function callBack(method){
+    alert(method+":callback 완료");
 }
 
 function fn_callBackCapture(logDate, logTime, screenId){

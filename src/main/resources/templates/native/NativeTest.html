@@ -12,7 +12,7 @@
     <div class="container">
         <div th:replace="fragments/bodyHeader :: bodyHeader" />
         <div class="jumbotron"> <h1>Native Call</h1>
-            <p class="lead">통신</p>
+            <p class="lead"><h2><u>통신</u></h2></p>
             <button id="btnNativeCall" type="submit" class="btn btn-sm btn-secondary">Native Call</button>
             <button id="btnCapture" type="submit" class="btn btn-sm btn-secondary">캡처방지</button>
             </p>
@@ -20,22 +20,27 @@
             <button id="btnAppInit" type="submit" class="btn btn-sm btn-danger">앱초기화</button>
             <button id="btnAppFirst" type="submit" class="btn btn-sm btn-secondary">앱첫사용여부</button>
             </p>
-            <p class="lead">페이지 이동</p>
+            <p>
+                <button id="btnClearTmp" type="submit" class="btn btn-sm btn-secondary">임시폴더삭제</button>
+            </p>
+
+            <br>
+            <p class="lead"><h2><u>페이지 이동</u></h2></p>
             <p>
                 <button id="btnMove" type="submit" class="btn btn-lg btn-secondary">홈으로 이동</button>
                 <button id="btnPopup" type="submit" class="btn btn-lg btn-secondary">팝업페이지</button>
                 <button id="btnUpload" type="submit" class="btn btn-lg btn-secondary">파일업로드</button>
                 <button id="btnBack" type="submit" class="btn btn-lg btn-danger">뒤로가기</button>
             </p>
-
-            <p class="lead">DB 접근</p>
+            <br>
+            <p class="lead"><u><h2>DB 접근</h2></u></p>
             <p>
                 <button id="btnFetch" type="submit" class="btn btn-lg btn-info">select</button>
                 <button id="btnTest" type="submit" class="btn btn-lg btn-info">Json 테스트</button>
 
             </p>
-
-            <p class="lead">고객용앱 Bio 접근(웹->앱)</p>
+            <br>
+            <p class="lead"><u><h2>고객용앱 Bio 접근(웹->앱)</u></h2></p>
             <p>
                 <button id="btnBioMove" type="submit" class="btn btn-lg btn-secondary">고객용앱바이오</button>
                 <a id="btn_appCall" />
