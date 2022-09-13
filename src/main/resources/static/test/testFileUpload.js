@@ -6,7 +6,7 @@ $(document).ready(function(){
         alert("hello!!");
         var params = {header : { api: '133'}, body: {callBackFunc:  'callBack'}};
         webkit.messageHandlers.callApp.postMessage(params);
-        alert("삭제완료")
+//        alert("삭제완료");
         form01.submit();
     });
 });
