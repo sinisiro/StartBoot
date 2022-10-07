@@ -72,6 +72,7 @@ function exeApp(){
     url += "&BIO_SIG_TOKEN_NO=testTokens";
 
 
+
     setTimeout(function(){
 //        $("#btn_appCall").attr("href", url)[0].click();
     },0);
