@@ -5,8 +5,7 @@
 $(document).ready(function(){
 
 
-    ("#btnBio").click(function(){
-
+    $("#btnBio").click(function(){
             alert("호출");
             console.log("앱 스키마 호출!!!!");
 
@@ -38,42 +37,6 @@ $(document).ready(function(){
                 location.href = url;
             },0);
         });
-//
-//     $("#btnBio").click(function(){
-//
-//            console.log("앱 스키마 호출");
-//
-//            var plan_no = "108018100520017";
-//            var cust_no ="1";
-//            var age= "40";
-//            var sex = "1";
-//
-//
-//            var url = "";
-//            url += "dongbuins://aerox";
-//            url += "?serviceID= "+ plan_no;
-//            url += "&custNo ="+ cust_no;
-//            url += "&serverPublicKeyVer =";
-//            url += "&serverPublicKey =";
-//            url += "&ins_plhd_dvn =";
-//            url += "&ment ="
-//            url += "&userAge =" + age;
-//            url += "&userSex ="+sex;
-//            url += "&BIO_SIG_TOKEN_NO = testToken";
-//
-//            setTimeout(function(){
-//            //22.07 iOS 카카오 인앱에서 외부 앱 호출하면 인앱닫히는 현상 방지하기위함.
-//            $("#btn_appCall").attr("href", url)[0].click();
-//                location.href = url;
-//            },0);
-//
-////            setTimeout(function(){
-////                location.href = url;
-//////                $("#btn_appcall").attr("href",url)[0].click();
-////            },0);
-//
-//
-//        });
 
     $("#btnClose").click(function(){
         window.close();
