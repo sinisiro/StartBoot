@@ -3,6 +3,9 @@
     문서 load시 세팅된다.
 */
 $(document).ready(function(){
+
+
+
     alert("화면시작했음");
     var plan_no = "108018100520017";
     var cust_no ="1";
