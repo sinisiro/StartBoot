@@ -49,9 +49,7 @@ $(document).ready(function(){
 
 });
 
-$(window).onload(function(){
-
-
+window.onload = function(){
 
   var plan_no = "108018100520017";
     var cust_no ="1";
