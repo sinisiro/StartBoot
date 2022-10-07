@@ -27,8 +27,15 @@ $(document).ready(function(){
             url += "&BIO_SIG_TOKEN_NO = testToken";
 
             setTimeout(function(){
+            //22.07 iOS 카카오 인앱에서 외부 앱 호출하면 인앱닫히는 현상 방지하기위함.
+            $("#btn_appCall").attr("href", url)[0].click();
                 location.href = url;
             },0);
+
+//            setTimeout(function(){
+//                location.href = url;
+////                $("#btn_appcall").attr("href",url)[0].click();
+//            },0);
 
 
         });

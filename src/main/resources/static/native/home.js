@@ -9,5 +9,10 @@ $(document).ready(function(){
           form01.submit();
     });
 
+    $("#btnAppCall").click(function(){
+        $("#form01").attr("action","/native/appCall");
+          form01.submit();
+    });
+
 });
 
