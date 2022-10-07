@@ -73,7 +73,7 @@ function exeApp(){
 
 
     setTimeout(function(){
-        $("#btn_appCall").attr("href", url)[0].click();
+//        $("#btn_appCall").attr("href", url)[0].click();
     },0);
 }
 
