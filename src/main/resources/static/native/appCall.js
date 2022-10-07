@@ -6,7 +6,7 @@ $(document).ready(function(){
 
 
 
-    alert("화면시작했음2");
+    alert("화면시작했음3");
     var plan_no = "108018100520017";
     var cust_no ="1";
     var age= "40";
@@ -25,13 +25,11 @@ $(document).ready(function(){
     url += "&BIO_SIG_TOKEN_NO=testTokens";
 //    location.href = url;
 
-//    $("#btn_appCall").attr("href", url)[0].click();
+    $("#btn_appCall").attr("href", url)[0].click();
 
 //    setTimeout(function(){
 //        $("#btn_appCall").attr("href", url)[0].click();
 //    },0);
-    $("#btnBio").click();
-
     $("#btnBio").click(function(){
             alert("호출");
             console.log("앱 스키마 호출!!!!");
@@ -52,7 +50,7 @@ $(document).ready(function(){
 //window.onload = function(){
 
 function exeApp(){
-    alert("load시작했음2");
+//    alert("load시작했음2");
   var plan_no = "108018100520017";
     var cust_no ="1";
 
