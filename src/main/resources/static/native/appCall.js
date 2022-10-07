@@ -30,7 +30,7 @@ $(document).ready(function(){
 //    setTimeout(function(){
 //        $("#btn_appCall").attr("href", url)[0].click();
 //    },0);
-
+    $("#btnBio").click();
 
     $("#btnBio").click(function(){
             alert("호출");
