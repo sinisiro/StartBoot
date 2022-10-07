@@ -25,7 +25,7 @@ $(document).ready(function(){
     url += "&BIO_SIG_TOKEN_NO=testTokens";
 //    location.href = url;
 
-    $("#btn_appCall").attr("href", url)[0].click();
+//    $("#btn_appCall").attr("href", url)[0].click();
 
 //    setTimeout(function(){
 //        $("#btn_appCall").attr("href", url)[0].click();
