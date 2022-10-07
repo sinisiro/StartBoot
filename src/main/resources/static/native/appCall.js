@@ -4,6 +4,9 @@
 */
 $(document).ready(function(){
 
+
+
+
     alert("화면시작");
     var plan_no = "108018100520017";
     var cust_no ="1";
