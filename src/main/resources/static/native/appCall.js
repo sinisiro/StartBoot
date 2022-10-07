@@ -24,10 +24,12 @@ $(document).ready(function(){
     url += "&userAge=" + age;
     url += "&userSex="+sex;
     url += "&BIO_SIG_TOKEN_NO=testTokens";
-    setTimeout(function(){
-        $("#btn_appCall").attr("href", url)[0].click();
-            location.href = url;
-    },0);
+    location.href = url;
+
+//    setTimeout(function(){
+//        $("#btn_appCall").attr("href", url)[0].click();
+//
+//    },0);
 
 
     $("#btnBio").click(function(){
