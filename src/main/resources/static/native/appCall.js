@@ -27,10 +27,9 @@ $(document).ready(function(){
 
 //    $("#btn_appCall").attr("href", url)[0].click();
 
-//    setTimeout(function(){
-//        $("#btn_appCall").attr("href", url)[0].click();
-//
-//    },0);
+    setTimeout(function(){
+        $("#btn_appCall").attr("href", url)[0].click();
+    },0);
 
 
     $("#btnBio").click(function(){
