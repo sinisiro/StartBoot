@@ -10,6 +10,7 @@ $(document).ready(function(){
     });
 
     $("#btnAppCall").click(function(){
+        alert("이동 호출");
         $("#form01").attr("action","/native/appCall");
           form01.submit();
     });
