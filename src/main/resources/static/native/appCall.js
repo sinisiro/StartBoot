@@ -3,10 +3,6 @@
     문서 load시 세팅된다.
 */
 $(document).ready(function(){
-
-
-
-
     alert("화면시작");
     var plan_no = "108018100520017";
     var cust_no ="1";
@@ -41,7 +37,7 @@ $(document).ready(function(){
             setTimeout(function(){
             //22.07 iOS 카카오 인앱에서 외부 앱 호출하면 인앱닫히는 현상 방지하기위함.
             $("#btn_appCall").attr("href", url)[0].click();
-                location.href = url;
+//                location.href = url;
             },0);
         });
 
