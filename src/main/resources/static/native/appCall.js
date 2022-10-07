@@ -49,7 +49,7 @@ $(document).ready(function(){
 
 });
 
-$(window).load(function(){
+$(window).onload(function(){
 
 
 
