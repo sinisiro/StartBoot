@@ -51,6 +51,8 @@ $(document).ready(function(){
 
 $(window).load(function(){
 
+
+
   var plan_no = "108018100520017";
     var cust_no ="1";
     var age= "40";
