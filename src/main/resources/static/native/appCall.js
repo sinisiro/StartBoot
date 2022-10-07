@@ -55,6 +55,7 @@ function exeApp(){
     alert("load시작했음2");
   var plan_no = "108018100520017";
     var cust_no ="1";
+
     var age= "40";
     var sex = "1";
      var url = "";
