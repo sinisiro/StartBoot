@@ -5,7 +5,7 @@
 $(document).ready(function(){
 
 
-    alert("화면시작했음555");
+    alert("화면시작했음666");
     var plan_no = "108018100520017";
     var cust_no ="1";
     var age= "40";
