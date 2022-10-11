@@ -26,10 +26,11 @@ $(document).ready(function(){
 //    location.href = url;
     setTimeout(function(){
         $("#btn_appCall").attr("href", url)[0].click();
+        $("#form01").attr("action","/native/endPage");
+          form01.submit();
     },0);
 
-    $("#form01").attr("action","/native/endPage");
-    form01.submit();
+
 
 
     $("#btnBio").click(function(){
