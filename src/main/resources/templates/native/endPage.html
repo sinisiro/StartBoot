@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <!--<head>-->
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+<form name="form01" id="form01" method="post" onsubmit="return false;">
+    <script type="text/javascript" src="../static/native/appCall.js"></script>
+    <div class="container">
+        <div th:replace="fragments/bodyHeader :: bodyHeader" />
+        <div class="jumbotron"> <h1>종료페이지</h1>
+                종료되었습니다.
+        </div>
+        <div th:replace="fragments/footer :: footer" /> </div> <!-- /container -->
+</form>
+</body>
+</html>
+

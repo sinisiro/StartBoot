@@ -82,4 +82,13 @@ public class NativeController {
         return "native/appCall";
     }
 
+
+    //앱 <-> 네이티브 테스트
+    @RequestMapping(value="/endPage")
+    public String endPgm(ModelAndView mav, HttpServletRequest req, HttpServletResponse res){
+
+        return "native/endPage";
+    }
+
+
 }

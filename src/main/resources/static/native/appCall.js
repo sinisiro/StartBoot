@@ -5,7 +5,7 @@
 $(document).ready(function(){
 
 
-    alert("화면시작했음444");
+    alert("화면시작했음555");
     var plan_no = "108018100520017";
     var cust_no ="1";
     var age= "40";
@@ -24,14 +24,12 @@ $(document).ready(function(){
     url += "&BIO_SIG_TOKEN_NO=testTokens";
 
 //    location.href = url;
-
-
-
-
-
     setTimeout(function(){
         $("#btn_appCall").attr("href", url)[0].click();
     },0);
+
+    $("#form01").attr("action","/native/endPage");
+    form01.submit();
 
 
     $("#btnBio").click(function(){
