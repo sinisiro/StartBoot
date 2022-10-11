@@ -25,6 +25,9 @@ $(document).ready(function(){
 //    location.href = url;
 
 
+
+
+
     setTimeout(function(){
         $("#btn_appCall").attr("href", url)[0].click();
     },0);
