@@ -25,9 +25,10 @@ $(document).ready(function(){
 
 //    location.href = url;
     setTimeout(function(){
-        $("#btn_appCall").attr("href", url)[0].click();
-        $("#form01").attr("action","/native/endPage");
-          form01.submit();
+//        $("#btn_appCall").attr("href", url)[0].click();
+        //안드로이드의 경우, 앱으로 이동하면 웹페이지 이동한거를 무시해버린다.(나가버림).
+//        $("#form01").attr("action","/native/endPage");
+//          form01.submit();
     },0);
 
 
@@ -39,8 +40,9 @@ $(document).ready(function(){
 
             setTimeout(function(){
             //22.07 iOS 카카오 인앱에서 외부 앱 호출하면 인앱닫히는 현상 방지하기위함.
-            $("#btn_appCall").attr("href", url)[0].click();
-//                location.href = url;
+                $("#btn_appCall").attr("href", url)[0].click();
+                $("#form01").attr("action","/native/endPage");
+                form01.submit();
             },0);
         });
 
