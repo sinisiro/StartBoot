@@ -1,12 +1,10 @@
 {
-    applinks: {
-        details: [
+    "applinks": {
+        "details": [
             {
-                appIDs: ["2AG87FN595.com.mdbins.webViewSBT"],
-                components: [
-                       {
-                    /: “*”
-                    }
+                "appID": "2AG87FN595.com.mdbins.webViewSBT",
+                "paths": [
+                    "*"
                 ]
             }
         ]
