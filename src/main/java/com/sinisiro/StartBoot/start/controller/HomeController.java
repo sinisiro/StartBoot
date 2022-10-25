@@ -42,7 +42,7 @@ public class HomeController {
     public @ResponseBody void assa(HttpServletRequest req, HttpServletResponse res) throws IOException, ParseException {
 
         res.setContentType("application/json");
-        res.setCharacterEncoding("utf-8");
+//        res.setCharacterEncoding("utf-8");
 
 
         String assa = "{\n" +
