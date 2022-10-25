@@ -4,6 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 @Controller
 @Slf4j
 public class HomeController {
@@ -26,8 +29,13 @@ public class HomeController {
         return "start/home";
     }
 
+    //https://ohgyun.com/707 참고함.
     @RequestMapping("/.well-known/apple-app-site-association")
-    public @ResponseBody String assa() {
+    public @ResponseBody String assa(HttpServletRequest req, HttpServletResponse res) {
+
+        res.setContentType("application/json");
+        res.setCharacterEncoding("UTF-8");
+
         return "{\n" +
                 "    \"applinks\": {\n" +
                 "        \"details\": [\n" +
