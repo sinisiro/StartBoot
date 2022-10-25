@@ -2,9 +2,7 @@ package com.sinisiro.StartBoot.start.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @Slf4j
@@ -26,5 +24,21 @@ public class HomeController {
         log.info("111");
 
         return "start/home";
+    }
+
+    @RequestMapping("/.well-known/apple-app-site-association")
+    public @ResponseBody String assa() {
+        return "{\n" +
+                "    \"applinks\": {\n" +
+                "        \"details\": [\n" +
+                "            {\n" +
+                "                \"appID\": \"2AG87FN595.com.mdbins.webViewSBT\",\n" +
+                "                \"paths\": [\n" +
+                "                    \"*\"\n" +
+                "                ]\n" +
+                "            }\n" +
+                "        ]\n" +
+                "    }\n" +
+                "}";
     }
 }
