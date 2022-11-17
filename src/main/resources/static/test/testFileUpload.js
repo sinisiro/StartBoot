@@ -9,6 +9,17 @@ $(document).ready(function(){
 //        alert("삭제완료");
         form01.submit();
     });
+
+     $("#btnCamera").click(function(){
+        $("#upload-image").attr("capture", "camera");
+        $("#upload-image").click();
+     });
+
+
+     $("#btnCall").click(function(){
+        $("#upload-image").removeAttr("capture");
+         $("#upload-image").click();
+      });
 });
 
 function callBack(method){
