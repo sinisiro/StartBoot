@@ -14,10 +14,18 @@
       <input text type="text" id="senderName" name="senderName" class="inp-base" size="10" value="테스트부트" placeholder="입력">
       <input multiple type="file" name="files" id="files">
       <br>
-      사진촬영
-      <input type="file" id="upload-image" multiple="multiple" data-role="none" size="10" accept="image/*" capture="camera">
+
+
+      <button id="btnCamera" type="button">사진촬영</button><br>
+      <button id="btnCall" type="button">불러오기</button><br>
+
     </div>
-    <button id="btnClearTmp" type="submit">등록</button>
+    <button  type="submit">등록</button>
+
+
+    <button id="btnClearTmp" type="submit">임시폴더삭제</button>
+
+  <input type="file" id="upload-image" multiple="multiple" data-role="none" name="file[]" size="10" accept="image/*" style="display:none;">
 </div> <!-- /container -->
 </form>
    <div th:text="${fileName}">fileName</div>
