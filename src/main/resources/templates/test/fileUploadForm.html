@@ -1,35 +1,50 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header">
+  <div th:replace="test/loading :: loading" />
   <!--<head>-->
   <title>Hello</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<form action="/test/fileUploadJson2" name="form01" id="form01" method="post"  enctype="multipart/form-data">
+
   <script type="text/javascript" src="../static/test/testFileUpload.js"></script>
+  <script type="text/javascript" src="../static/util/imgfileselector.js"></script>
+  <script type="text/javascript" src="../static/util/ajaxutil.js"></script>
+
 <div class="container">
   <div th:replace="fragments/bodyHeader :: bodyHeader" />
     <div class="form-group">
+    <form action="/test/fileUploadJson2" name="form01" id="form01" method="post"  enctype="multipart/form-data">
+      <div class= "box_round c1">
+        <div class="filebox1">
+          <input type="file" id="upload-image" multiple="multiple" data-role="none" name="file[]" size="10" accept="image/*" style="display:none;">
+
+
+        <div id="thumbnail"></div>
+        </div>
+      </div>
+
+      <div id="files_list"></div>
+
       <input text type="text" id="senderName" name="senderName" class="inp-base" size="10" value="테스트부트" placeholder="입력">
-      <input multiple type="file" name="files" id="files">
-      <br>
+      <input multiple type="file" name="files" id="files"><br>
+      <button id="btnCamera" class="btn t2 c2" type="button">사진촬영</button>
+      <button id="btnCall" class="btn t2 cl1" type="button">불러오기</button>
+      <button id="btnDeleteMode" class="btn t2 cl3" type="button">삭제하기</button><br>
+      <button type="button" class="btn btn_bg t2 c3" id="btnDelete" style="display:none">삭제</button>
+      <button type="button" class="btn btn_bg t2 c2" id="btnDeleteCancel" style="display:none">취소</button>
 
 
-      <button id="btnCamera" type="button">사진촬영</button><br>
-      <button id="btnCall" type="button">불러오기</button><br>
-
-    </div>
-    <button  type="submit">등록</button>
-
-
+      <button id="btnSubmit" type="button" class="btn_submit off">등록</button>
+<!--    <button type="submit" class="btn_submit">등록</button>-->
     <button id="btnClearTmp" type="submit">임시폴더삭제</button>
 
-  <input type="file" id="upload-image" multiple="multiple" data-role="none" name="file[]" size="10" accept="image/*" style="display:none;">
+    </form>
+    </div>
 </div> <!-- /container -->
-</form>
    <div th:text="${fileName}">fileName</div>
-
+  </form>
 </body>
 <div th:replace="fragments/footer :: footer" /> </div> <!-- /container -->
 </html>

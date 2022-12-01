@@ -118,7 +118,7 @@ console.log("here");
       //    var gubun = $("#gubun").val();        //select box
 
       var settings = {
-        "url": "http://localhost:7080/test/getBASE64",
+        "url": "http://localhost:8080/test/getBASE64",
         "method": "POST",
         "timeout": 0,
         "headers": {

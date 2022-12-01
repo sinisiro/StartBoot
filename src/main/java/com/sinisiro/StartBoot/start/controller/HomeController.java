@@ -41,6 +41,7 @@ public class HomeController {
     @RequestMapping("/.well-known/apple-app-site-association")
     public @ResponseBody void assa(HttpServletRequest req, HttpServletResponse res) throws IOException, ParseException {
 
+        //application/json으로 리턴
         res.setContentType("application/json");
 //        res.setCharacterEncoding("utf-8");
 
@@ -58,8 +59,6 @@ public class HomeController {
                 "        ]\n" +
                 "    }\n" +
                 "}\n";
-
-        String str = "{\"name\" : \"apple\", \"id\" : 1, \"price\" : 1000}";
 
         JSONParser parser = new JSONParser();
         JSONObject jsonObject = (JSONObject) parser.parse(assa);

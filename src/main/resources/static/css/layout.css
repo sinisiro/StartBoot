@@ -1,0 +1,38 @@
+
+/* 썸네일 추가되는 영역 */
+#thumbnail {overflow: auto; width: 100%; height: 22rem; margin: auto;}
+#thumbnail div { float:left;box-sizing: border-box; width: 48%; text-align:center;}
+#thumbnail img {width: 100px;height: 90px;margin: 5px;}
+#thumbnail input[type="checkbox"]{width:2.4rem;height:2.4rem}
+
+#thumbnail input[type="radio"],
+#thumbnail input[type="checkbox"]{position:relative; width:2.4rem; height:2.4rem; }
+
+.box_round {padding:2.2rem 1.2rem; border-radius:1rem;}
+.box_round.c1 {border:1px solid #d4d4d4;}
+
+.btn_submit {display: block; width: 100%; height: 5.3rem; line-height: 5.3rem; font-size: 1.7rem; color: #fff; text-align:center; font-weight: 700; background-color: #ffc107; border: none;}
+.btn_submit.off {color: #333; background-color: #d4d4d4;}
+
+.btn{ display:inline-block; box-sizing:border-box; min-width:10.5rem;}
+.btn.t1 {min-width:8rem; min-height:4rem; padding:0 2rem; font-weight:bold; text-align:center; line-height:4rem; border:none; vertical-align:middle;}
+.btn.t2 {padding:1.2rem 0.5rem; font-size:1.6rem; text-align:center; border-radius:1rem;}
+.btn.c1 { background:#777777; color:#fff;  }
+.btn.c2 { background:#00864A; color:#fff;  }
+.btn.c3 { background:#db3e07; color:#fff;  }
+.btn.c4 { background:#bbbbbb; color:#fff;  }
+.btn.cl1 {border:1px solid #1a1a1a; color:#1a1a1a;  background:#fff; }
+.btn.cl2 {border:1px solid #00854A; color:#00854A;  background:#fff; }
+.btn.cl3 {border:1px solid #db3e07; color:#db3e07;  background:#fff; }
+.btn.cl4 { color:#333333; border:1px solid #bbbbbb;  background:#fff;  }
+.btn .ico { display:inline-block; width:1.6rem; height:1.6rem; margin-right:0.5rem; vertical-align: middle; background-position:center; background-repeat:no-repeat; background-size:cover; }
+.btn_line .ico.ico01 { background-image:url(../img/new/ico_btnIco01.png) }
+.btn_line .ico.ico02 { background-image:url(../img/new/ico_btnIco02.png) }
+.btn_ico {display:inline-block; width:1.4rem; height:1.4rem; margin-left:1rem; vertical-align:sub; }
+.btn_ico.open-pop{ background:url(../img/new/ico_openwin.png) center no-repeat; background-size:contain;}
+.btn_line-gray .ico { display:inline-block; width:1.6rem; height:1.6rem; margin-right:0.5rem; vertical-align: middle; background-position:center; background-repeat:no-repeat; background-size:cover; }
+.btn_line-gray .ico.ico01 { background-image:url(../img/new/ico_btnIco01.png) }
+.btn_line-gray .ico.ico02 { background-image:url(../img/new/ico_btnIco02.png) }
+.wrap_btn_t2 > div .btn {display:inline-block; width:100%;}
+.btn_s { padding:0 2rem; color:#fff; font-weight:bold; text-align:center; border:none; vertical-align:middle;}
+.btn_s.c1  { background:#777777; }

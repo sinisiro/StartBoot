@@ -1,27 +1,32 @@
 package com.sinisiro.StartBoot.start.controller;
 
+import com.sinisiro.StartBoot.util.AES256Cipher;
+import com.sinisiro.StartBoot.util.ImageUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.jni.FileInfo;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -207,6 +212,158 @@ public class TotalTestController {
 
 
         return "success";
+    }
+
+    //MultipartHttpServletRequest 로 파일 받기.
+    @RequestMapping(value="/fileUploadJson3",  method = RequestMethod.POST)
+    public @ResponseBody Map uploadJson3(HttpServletRequest req,  HttpServletResponse res,
+                                            Model model) throws Exception {
+        log.info("img_b64Data 로 전달받기");
+
+        Map<String, Object> resultData = new HashMap<>();
+
+//        log.info(req.getParameter("img_b64Data"));
+        String img_b64Data = req.getParameter("img_b64Data");
+        String seq = req.getParameter("seq");
+
+//        String img_b64Data = URLDecoder.decode(img_b64DataEncode, "UTF-8");
+
+//        log.info(img_b64Data);
+
+
+        String fileExtension = ImageUtil.getImageType(img_b64Data);
+
+        String UPLOADED_FOLDER = "./upload/";
+        // 현재 시간
+        LocalTime now = LocalTime.now();
+        // 포맷 정의하기
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HHmmss");
+        String formatedNow = now.format(formatter);
+
+        ImageUtil.base64StringToJpeg(img_b64Data,UPLOADED_FOLDER+formatedNow+seq+"."+fileExtension);
+
+        Thread.sleep(1000);     //로딩바 딜레이주기.
+
+        resultData.put("method","fileUploadJson3");
+        resultData.put("seq",seq);
+        resultData.put("result","Y");
+        resultData.put("result_cd","0000");
+
+        return resultData;
+
+
+//        String UPLOADED_FOLDER = "./upload/";
+//        byte[] bytes = file.getBytes();
+//        Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+//        log.info(path.toString());
+//        Files.write(path, bytes);
+//
+//        model.addAttribute("fileName", file.getOriginalFilename());
+
+    }
+
+
+
+    //AES256 암호화
+    @RequestMapping(value="/getAES256",  method = RequestMethod.POST)
+    public @ResponseBody Map getAES256(@RequestBody Map requestMap) throws InvalidAlgorithmParameterException, UnsupportedEncodingException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+
+        Map<String, Object> resultData = new HashMap<>();
+        String reqVal = (String) requestMap.get("val");
+        String gubun = (String) requestMap.get("gubun");
+
+        AES256Cipher a256 = AES256Cipher.getInstance();
+        String result;
+        if(gubun.equals("enc")){
+            result = AES256Cipher.AES_Encode(reqVal);
+        }
+        else{
+            result = AES256Cipher.AES_Decode(reqVal);
+        }
+
+
+
+        resultData.put("val",result);
+        resultData.put("method","getAES256");
+        resultData.put("result","성공");
+        resultData.put("result_cd","0000");
+
+        return resultData;
+    }
+
+    //base64
+    @RequestMapping(value="/getBASE64",  method = RequestMethod.POST)
+    public @ResponseBody Map getBASE64(@RequestBody Map requestMap) throws InvalidAlgorithmParameterException, UnsupportedEncodingException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+
+        Map<String, Object> resultData = new HashMap<>();
+
+        String reqVal = (String) requestMap.get("val");
+        String gubun = (String) requestMap.get("gubun");
+
+        byte[] resultBytes;
+
+        if(gubun.equals("enc")){
+            // Base64 인코딩
+            byte[] targetBytes = reqVal.getBytes();
+            Base64.Encoder encoder = Base64.getEncoder();
+            resultBytes = encoder.encode(targetBytes);
+        }
+        else{
+            Base64.Decoder decoder = Base64.getDecoder();
+            resultBytes = decoder.decode(reqVal.getBytes());
+        }
+
+
+        resultData.put("val",new String(resultBytes));
+        resultData.put("method","getBASE64");
+        resultData.put("result","성공");
+        resultData.put("result_cd","0000");
+
+        return resultData;
+    }
+
+
+    //base64
+    @RequestMapping(value="/getAESBASE",  method = RequestMethod.POST)
+    public @ResponseBody Map getAESBASE(@RequestBody Map requestMap) throws InvalidAlgorithmParameterException, UnsupportedEncodingException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+
+        Map<String, Object> resultData = new HashMap<>();
+
+        String result ="";      //최종 리턴값
+        String temp ="";
+        String reqVal = (String) requestMap.get("val");
+        String gubun = (String) requestMap.get("gubun");
+
+        byte[] resultBytes;
+
+        AES256Cipher a256 = AES256Cipher.getInstance();
+        try {
+            if (gubun.equals("enc")) {
+                temp = AES256Cipher.AES_Encode(reqVal);
+                // Base64 인코딩
+                byte[] targetBytes = temp.getBytes();
+                Base64.Encoder encoder = Base64.getEncoder();
+                resultBytes = encoder.encode(targetBytes);
+                result = new String(resultBytes);
+            } else {
+                Base64.Decoder decoder = Base64.getDecoder();
+                resultBytes = decoder.decode(reqVal.getBytes());
+                result = AES256Cipher.AES_Decode(new String(resultBytes));
+            }
+
+            resultData.put("val", result);
+            resultData.put("method", "getBASE64");
+            resultData.put("result", "성공");
+            resultData.put("result_cd", "0000");
+        } catch (Exception e) {
+            log.info(e.toString());
+            resultData.put("val", result);
+            resultData.put("method", "getBASE64");
+            resultData.put("result", "실패");
+            resultData.put("result_cd", "1111");
+        }
+
+        return resultData;
     }
 
 
