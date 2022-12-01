@@ -249,7 +249,7 @@ public class TotalTestController {
         resultData.put("result","Y");
         resultData.put("result_cd","0000");
 
-        return resultData;
+        return resultData; 
 
 
 //        String UPLOADED_FOLDER = "./upload/";
