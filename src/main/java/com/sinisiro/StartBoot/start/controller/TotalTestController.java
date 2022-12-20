@@ -429,7 +429,6 @@ public class TotalTestController {
 
         }
 
-
         byte[] bytes = multipartFile.getBytes();
         Path path = Paths.get(UPLOADED_FOLDER + multipartFile.getOriginalFilename());
         log.info(path.toString());
