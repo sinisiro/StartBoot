@@ -385,6 +385,7 @@ public class TotalTestController {
     }
 
 
+
     /**
      * 파일업로드시 리사이징 샘플테스트(주행거리 블랙박스 테스트용)
      * 업로드시 javascript를 이용한 리사이징 테스트
