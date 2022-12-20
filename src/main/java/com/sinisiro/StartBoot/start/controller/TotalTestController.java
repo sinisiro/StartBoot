@@ -16,6 +16,10 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.xml.bind.DatatypeConverter;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -366,7 +370,111 @@ public class TotalTestController {
         return resultData;
     }
 
+    //데몬에서 api호출하는 테스트용 API
+    @RequestMapping(value="/testAPI",  method = RequestMethod.POST)
+    public @ResponseBody Map testAPI(ModelAndView mav, HttpServletRequest req, HttpServletResponse res){
+        Map<String, Object> resultData = new HashMap<>();
+
+        System.out.println(req.getParameter("num"));
+
+        resultData.put("method", "testAPI");
+        resultData.put("result", "성공");
 
 
+        return resultData;
+    }
+
+
+    /**
+     * 파일업로드시 리사이징 샘플테스트(주행거리 블랙박스 테스트용)
+     * 업로드시 javascript를 이용한 리사이징 테스트
+     */
+
+    @RequestMapping(value="/fileUploadResizing",  method = RequestMethod.GET)
+    public String fileUploadResizing(ModelAndView mav, HttpServletRequest req, HttpServletResponse res){
+
+        return "test/fileUploadResizing";
+    }
+    //MultipartHttpServletRequest 로 파일 받기.
+    @RequestMapping(value="/fileUploadMultiPartResized",  method = RequestMethod.POST)
+    public @ResponseBody String fileUploadMultiPartResized(MultipartHttpServletRequest req,  HttpServletResponse res,
+                                            Model model) throws Exception {
+        log.info("request 로 전달받기");
+
+
+        Iterator<String> iterator = req.getFileNames();
+        MultipartFile multipartFile = null;
+
+        while(iterator.hasNext()){
+            multipartFile = req.getFile(iterator.next());
+            System.out.println(multipartFile.getOriginalFilename());
+        }
+
+        String UPLOADED_FOLDER = "./uploadResized/";
+
+        File Folder = new File(UPLOADED_FOLDER);
+
+        // 해당 디렉토리가 없을경우 디렉토리를 생성합니다.
+        if (!Folder.exists()) {
+            try{
+                Folder.mkdir(); //폴더 생성합니다.
+                System.out.println("폴더가 생성되었습니다.");
+            }
+            catch(Exception e){
+                e.getStackTrace();
+            }
+        }else {
+            System.out.println("이미 폴더가 생성되어 있습니다.");
+
+        }
+
+
+        byte[] bytes = multipartFile.getBytes();
+        Path path = Paths.get(UPLOADED_FOLDER + multipartFile.getOriginalFilename());
+        log.info(path.toString());
+        Files.write(path, bytes);
+
+        File file = new File(UPLOADED_FOLDER+multipartFile.getOriginalFilename());
+
+        Object[] imgFile = new Object[1];
+
+        FileInputStream fis = new FileInputStream(file);
+        byte [] fileByte = new byte[(int) file.length()];
+        fis.read(fileByte);
+        imgFile[0] = fileByte;
+        fis.close();
+        fis = null;
+
+
+        HttpSession session = req.getSession();
+        session.setAttribute("imgfile", imgFile);
+
+        return "success";
+    }
+
+    @RequestMapping(value="/fileUploadResizingEnd",  method = RequestMethod.POST)
+    public ModelAndView fileUploadResizingEnd(ModelAndView mav, HttpServletRequest req, HttpServletResponse res){
+        System.out.println("fileUploadResizingEnd");
+
+        HttpSession session = req.getSession();
+        Object[] imgfile =  (Object[]) session.getAttribute("imgfile");
+        String encoded ="";
+
+        if(imgfile != null){
+            byte[] file = (byte[]) imgfile[0];
+            encoded = DatatypeConverter.printBase64Binary(file);
+            //22.12.16 request객체에 담으면 tymeleaf에서 받을수가 없다. ModelAndView로 담으면 값이 넘어간다.
+            req.setAttribute("imgsrc", "data:image/jpeg;base64,"+encoded);
+        }
+
+//        System.out.println(req.getAttribute("imgsrc"));
+
+
+        mav.setViewName("/test/fileUploadResizingEnd");
+        mav.addObject("imgsrc","data:image/jpeg;base64,"+encoded);
+
+        return mav;
+//        return "test/fileUploadResizingEnd";
+    }
 
 }

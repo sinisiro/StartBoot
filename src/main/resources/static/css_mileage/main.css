@@ -1,0 +1,249 @@
+@charset "UTF-8";
+@import url("./common.css");
+@import url("./popup.css");
+
+
+html{font-size:62.5%;}
+body,button {color:#545350;font-family:"맑은 고딕", NanumGothic, Helvetica, sans-serif;font-size:1.3em;line-height:1em;}
+input, select {font-size:1.3em;}
+@media only screen and (min-width:768px) {
+    html{font-size:100%;}
+}
+
+/*
+ * Layout Style
+ */
+#container {padding-bottom:2rem;}
+#container .content .cont_tit{position:relative; padding:1rem 0;background-color:#fff;text-align:center;}
+#container .content .cont_tit h1{display:inline-block; width:10rem; height:2.8rem; padding-left:1rem; overflow:hidden; background:url('/resources/mileage/img/logo.png') left top no-repeat; background-size:100% auto; font-size:0; line-height:0; text-indent:-1000px;}
+#container .content .pconts {padding:0 15px;}
+#container .content .cont_con .ctit {position:relative;text-align: center;font-size:2.3rem;background:#218082;color:#fff;  padding: 2.0rem 0 2.0rem 0rem;}
+#container .content .cont_con .ctit .btn_spcl {display:table-cell; position:absolute;right:0;top:0;height:100%;width:6rem;font-size:1.2rem; line-height:1.2rem;color:white; vertical-align:middle; border-left:1px solid #60a3a4;}
+#container .content .cont_con .ctit .btn_spcl span {display:block;}
+#container .content .cont_con .ctit .btn_spcl:before {content:''; display:inline-block;width:3rem;height:3rem;margin:1rem 0 .2rem 0;background:url('/resources/mileage/img/bg_icon.png') left top no-repeat;background-size:12.5rem auto;}
+
+
+
+/*
+ * Form
+ */
+.textarea{width:100%;height:8rem;padding:.3rem;color:#545350;font-size:1.3rem;border:1px solid #a8c1b1;}
+.text, .select{width:100%;height:2.5rem;padding:0 .3rem;color:#545350;font-size:1.3rem;border:1px solid #a8c1b1;}
+.char{padding:0 .4rem;}
+.text.disable {background-color:#eeede8;}
+.select{padding:0 2rem 0 .3rem;border-radius:0;border:1px solid #a8c1b1;background:url("/resources/mileage/img/select.png") no-repeat 100% 50%;background-size:2rem 2rem;}
+.scroll {overflow:hidden;overflow-y:scroll;overflow-x:hidden;-webkit-overflow-scrolling:touch;}
+input[type="checkbox"]{width:3rem; height:3rem;}
+input[type="checkbox"]{background:url("/resources/mileage/img/checkbox.png") no-repeat 0 0; background-size:3rem auto;}
+input[type="checkbox"]:checked{background-position:0 bottom;}
+
+
+
+/*
+ * h2, h3, h4
+ */
+h2.h2_tit {background-color:#038384;border-top:1px solid #015b57;border-bottom:1px solid #015b57;text-align:center;padding:0.6em;}
+h3.h3_tit {margin-bottom:1rem;padding-left:1.3rem;color:#014a3a;font-weight:bold;background:url("/resources/mileage/img/bul_dot_02.png") no-repeat 0 .6rem;background-size:1rem 1rem;}
+h3 {line-height:1.2em;margin-bottom:1rem;color:#014a3a;font-size:1.8rem;font-weight:bold;padding-bottom:10px;}
+h4.h4_tit {margin-bottom:1rem;padding-left:1.2rem;color:#333333;font-size:1.6rem;font-weight:bold;background:url("/resources/mileage/img/ico_dot.gif") no-repeat 0 .6rem;background-size:0.5rem 0.5rem;text-align:left;}
+.txt_h3{border:1px solid #e8d5a2;background-color:#fffbf0;padding:1rem;font-size:1.1em;line-height:1.2em;letter-spacing:-0.1em;}
+td[type="text2"]{background-color:#218082;width:100%;min-height:4.5rem;padding:0 1.3rem;color:#333333;font-size:1.8rem;}
+
+
+/* Box */
+.box_rider{padding:1rem;border-radius:.5rem;border:1px solid #00a88e;}
+
+/* Text */
+.txt_basic{line-height:1.2em;padding-bottom:2rem;color:#4a4946;font-size:1.5rem;letter-spacing:-.1rem;}
+.txt_basic2{line-height:0.5em;padding-bottom:2rem;vertical-align:middle;color:#4a4946;font-size:1.5rem;letter-spacing:-.1rem;}
+.txt_etc{line-height:1.2em;padding:0 1rem 2rem 1rem;}
+.txt_impor{line-height:1.4em;padding:0 1rem 2rem 2.5rem;font-size:1.5rem;letter-spacing:-.1rem;text-indent:-1.4rem}
+.txt_impor1{line-height:1.4em;padding:0 1rem 2rem 1.3rem;font-size:1.5rem;letter-spacing:-.1rem;letter-spacing:-.1rem;}
+.txt_impor strong{color:#e32c08;text-decoration:underline}
+.txt_impor1 strong{color:#e32c08;text-decoration:underline}
+
+/* Table */
+.tbl_basic{width:100%;border-top:1px solid #4d7b56;}
+.tbl_basic th, .tbl_basic td{padding:1rem .6rem;line-height:1.2em;border-bottom:1px solid #a8c1b1;border-right:1px solid #a8c1b1;font-size:1.6rem;}
+.tbl_basic td {background-color:#ffffff;}
+.tbl_basic tr td:last-of-type{border-right:0;}
+.tbl_basic tr:last-of-type th, .tbl_basic tr:last-of-type td{border-bottom:1px solid #4d7b56;}
+.tbl_basic th{color:#315a36;font-weight:normal;font-weight:bold;text-align:left;background-color:#e5f5f2;}
+.tbl_basic thead tr th:last-child{border-right:0}
+
+/*
+ * List
+ */
+
+/* ※ */
+ul.bul_list{padding:1rem 1rem 0 0;}
+ul.bul_list > li{position:relative;line-height:1.2em;margin-bottom:.5rem;padding-left:1.5rem;font-size:1.3rem;}
+ul.bul_list > li:last-of-type{margin-bottom:0;}
+ul.bul_list > li:before{content:"※";position:absolute;top:0;left:0;}
+
+/* 1. */
+ol.ol_list {padding:0;}
+ol.ol_list > li {text-indent:-1.2em;padding-left:1.6em;}
+
+/* ㆍ */
+ul.bul_sqr{padding:1rem 1rem 0 0;}
+ul.bul_sqr > li{position:relative;line-height:1.2em;margin-bottom:.5rem;padding-left:1rem;text-indent:0;}
+ul.bul_sqr > li:before{content:"";position:absolute;top:.55rem;left:.1rem;width:.3rem;height:.3rem;background-color:#8c8b86;}
+ul.bul_sqr > li:last-of-type{margin-bottom:0;}
+
+ /* - */
+ul.bul_dash{padding-top:.5rem;}
+ul.bul_dash li{position:relative;line-height:1.2em;margin-bottom:.5rem;padding-left:1rem;}
+ul.bul_dash li:last-of-type{margin-bottom:0;}
+ul.bul_dash li:before{content:"-";position:absolute;top:0;left:0;}
+
+dl.arg_list {padding:0;}
+dl.arg_list dt {font-weight:bold;margin:0.4rem 0 0.8rem 0;color:#097a70;font-size:1.4rem;}
+
+
+/*
+ * Button
+ */
+.btn_box{margin:2rem 0;text-align:center;}
+.btn_box .btn_basic:nth-of-type(n+2){margin-left:1.6rem;}
+.btn_basic{height:3rem;padding:0 1.3rem;color:#fff;font-size:1.45rem;background-color:#037582;}
+.btn_stroke{height:2.2rem;padding:0 1rem;color:#006d6d;font-size:1.2rem; border:1px solid #038383;}
+.btn_basic.org {background-color:#cb4d02;}
+
+button[type="button"]{background-color:#218082;width:100%;min-height:4.5rem;padding:0 1.3rem;color:white;font-size:1.8rem;}
+button.gry {background-color:#757575;}
+button.org {background-color:#e77111;}
+
+.btn-box {text-align:center;margin:2rem 1.3rem;}
+.btn-box button{width:auto;display:inline-block;min-height:5.5rem;}
+.btn-box button:nth-of-type(n) {width:48.2%;}
+.btn-box button:nth-of-type(n+2) {margin-left:1.6%;}
+.btn-box button:only-of-type {width:100%;}
+
+.btn-box1 {width:100%;display:table;  margin:2rem 0 0 0;}
+.btn-box1 button{width:49%;   min-height:4.6rem;}
+.btn-box1 button:nth-of-type(n+2) {margin-left:2%;}
+.btn-box1 button:only-of-type {width:100%;}
+
+.btn-box2 {text-align:center;margin:2rem 1rem;}
+.btn-box2 button{width:auto;display:inline-block;min-height:6.0rem;font-size:2.0rem;}
+.btn-box2 button:nth-of-type(n) {width:48.2%;}
+.btn-box2 button:nth-of-type(n+2) {margin-left:1.6%;}
+.btn-box2 button:only-of-type {width:100%;}
+
+.btn-box3 {text-align:left;margin:2rem 1rem;}
+.btn-box3 .add {display:table;width:100%;}
+.btn-box3 .add > * {display:table-cell;}
+.btn-box3 button{width:100%;  min-height:6rem;font-size:2.0rem;}
+.btn-box3 button:nth-of-type(n+2) {margin-left:1.6%;}
+.btn-box3 .btn_plus {width:7rem;min-height:6rem;padding-left:1rem;}
+.btn-box3 .btn_plus img {width:100%;}
+
+.mdf-area {position:relative;height:6rem;}
+.mdf-area .chk{position:absolute;right:0;top:1rem;margin-left:15px;}
+.mdf-area .chk2{position:absolute;right:0;top:1rem;margin-left:15px;margin-right:15px;}
+.mdf-box {display:table;width:88%;border-radius:4rem;border:1px solid #d1d1d1;}
+.mdf-box span {display:table-cell; vertical-align:middle;}
+.mdf-box span:nth-of-type(1) {width:46%; border-radius:4rem;background:#067e72; font-size:1.6rem;font-weight:bold;color:white; text-align:center}
+.mdf-box span:nth-of-type(2) {padding:0 .6rem;}
+.mdf-box span.unit {width:13%;font-size:1.8rem;font-weight:bold;line-height:5rem;}
+.mdf-box input[type="tel"]{width:100%;height:4rem;font-size:2.2rem;text-align:center;font-weight:bold; box-sizing:border-box; background-color:white}
+.mdf-box input[type="tel"][disabled="disabled"] {background-color:transparent}
+
+
+@media only screen and (min-width:320px){
+}
+
+@media only screen and (min-width:360px){
+}
+
+@media only screen and (min-width:375px){
+}
+
+@media only screen and (min-width:414px) {
+}
+
+
+@media only screen and (min-width:620px) and (max-width:1024px){
+}
+
+.btn_basic1{height:3rem;padding:0 1.3rem;color:#fff;font-size:1.45rem;background-color:#037582;}
+.ch_txt {text-align:left;font-size:1.45rem;padding-top:10px;font-weight:bold}
+
+/*
+ * Style
+ */
+.msg {background:url('/img/bg_msg.png') top center no-repeat;background-size:13rem 13rem;border-bottom:1px solid #80b2a7;padding:14rem 0 2rem 0;margin:1rem 1rem 0 1rem;text-align:center;font-size:1.6rem;color:#014a3a;}
+.f18{font-size:1.8rem;line-height:2.6rem}
+
+/* Tab */
+.tab{display:table;width:80%; border:1px solid #a8c1b1;border-bottom:0;}
+.tab li{display:table-cell;width:50%;height:3rem;border-right:1px solid #a8c1b1;color:#545350;font-size:1.3rem;}
+.tab li.active{color:#014a3a;font-weight:bold;background-color:#e5f5f2;}
+.tab li:last-of-type{border-right:0;}
+.tab li a{display:-webkit-box;height:100%;line-height:1.2em;-webkit-box-align:center;-webkit-box-pack:center}
+.tab2 li{width:50%;}
+.tab3 li{width:33.33%}
+.tab4 li{width:25%}
+.tab6 li{width:16.66%;}
+
+
+.t_txt {line-height:24px;text-align:left;margin-top:27px;color:#333333;font-size:1.8rem;}
+.t_txt2 {line-height:24px;text-align:left;margin-left:17px;color:#333333;font-size:1.8rem;}
+
+.tab_list {display:table;width:100%;background:url(/resources/mileage/img/bg_line.gif) repeat-x  100% 90px;}
+.tab_list  li{height:133px;display:table-cell;height:3rem;}
+.tab_list  li:last-of-type{border-right:0;}
+.tab_list  li a{display:-webkit-box;line-height:1.2em;-webkit-box-align:center;-webkit-box-pack:center;}
+.tab_list  li img {width: 100%;}
+
+
+.tab_spcl {display:inline-block;width:100%; border-bottom:3px solid #e7e7e7;margin-bottom:3rem;}
+.tab_spcl li {float:left;display:table; width:33%;height:6rem;border-bottom:1px solid #ccc;border-right:1px solid #ccc;}
+.tab_spcl li:nth-child(3n) {width:33%;border-right:none;}
+.tab_spcl li a {display:table-cell;width:100%;height:100%;vertical-align:middle;text-align:center;font-size:1.5rem;font-weight:bold;letter-spacing:-0.05em;}
+.tab_spcl li a span {display:block;}
+.tab_spcl li a.on {color:#167f82;}
+.tab_spcl li a.on:after {content:'';display:inline-block;width:1.625rem;height:1rem;background:url('/resources/mileage/img/bg_icon.png') -9.375rem top no-repeat;background-size:12.5rem auto;}
+.tab_spcl li a.on span {margin-bottom:1rem;}
+.tab_spcl li a.off {color:#c4c4c4;background:#f9f9f9;}
+
+
+@media only screen and (min-width:718px) and (max-width:1706px){
+    .tab_list {display:table;width:100%;background:url(/resources/mileage/img/bg_line.gif) repeat-x  100% 113px;}
+    .tab_list  li{height:133px;display:table-cell;height:3rem;}
+    .tab_list  li:last-of-type{border-right:0;}
+    .tab_list  li a{display:-webkit-box;line-height:1.2em;-webkit-box-align:center;-webkit-box-pack:center;}
+    .tab_list  li img {width: 100%;}
+    .tab3 li{width:33.33%}
+    .tab2 li{width:50%;}
+}
+
+.img_rider2{position:relative;margin:0 1rem;padding:2rem 2rem 2rem 2rem;background:#efefef;}
+/*.img_rider2 div{padding-bottom:1rem;}*/
+/*.img_rider2 p{padding-bottom:.5rem;}*/
+/*.img_rider2 button:last-of-type{margin-left:.5rem;}*/
+.img_rider2 img{width:9.6rem;background:#eeede8}
+.img_rider2 .img1{background:#d7d7d7;padding:20px 0;text-align:center;}
+
+.file_name {color:#666666;text-align:left;font-size:1.4rem;line-height:1.4em;margin-top:1rem;}
+.file_name1 {color:#666666;text-align:left;font-size:1.4rem;line-height:1.4em;padding:12px 15px 0 15px;}
+
+.btn_file{display:inline-block;overflow:hidden;position:relative;/*border-radius:5px;*/ border:1px solid #038383;margin-top:13px;}
+.btn_file label {display:inline-block;position:relative;z-index:20;height:3rem;line-height:3rem;padding:0 1.5rem;color:#006d6d;font-size:1.5rem;cursor:pointer}
+.btn_file input {position:absolute;top:0;right:0;z-index:10;font-size:20rem;opacity:0;}
+
+.finput {text-align:left;margin-top:10px;position:relative}
+.mileage {font-size:2.5rem;padding-left:5px;font-weight:bold;position:absolute;top:25px;right:2px;}
+.km {position:absolute;top:0;right:0;}
+.finput input {border:1px solid  #bbbbbb;text-align:left;width:80%;height:60px;padding:0 15px;color:#afafaf;font-family:Malgun Gothic;font-weight:normal; font-size: 1.5rem;}
+
+.carnum {border:1px solid #c0c0c0; padding:1.4rem 1rem;margin:0 1rem; text-align:center}
+.carnum:before {content:'';display:inline-block;width:4.555rem;height:4.1rem;background:url('/resources/mileage/img/bg_icon.png') left -4.5rem no-repeat;background-size:10rem auto; vertical-align:middle;}
+.carnum dl {display:inline-block;}
+.carnum dl dt,.carnum dl dd {float:left; font-size:1.6rem;text-align:center;width:9rem;}
+.carnum dl dt {border-right:1px solid #c0c0c0a8}
+
+/* 할인특약 사진예시 버튼 추가 */
+.img_rider2 .pos_btn{position:absolute;top:1.3rem;right:2rem;}
+button.btn_line_gray{padding:0 1.5rem;min-width:7rem;min-height:2.8rem;color:#666;font-size:1.3rem;line-height:2.7rem;text-align:center;background-color:#fff;border:1px solid#adadad}

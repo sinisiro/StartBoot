@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+/* Popup */
+.popup{z-index:100; position:absolute; top:0px; left:0%; width:100%; padding-bottom:1rem; text-align:left;background-color:#fff;min-height:100%;}
+.popup .pop_tit{position:relative; padding:1rem 0;background-color:#fff;text-align:center;}
+.popup .pop_tit h1{display:inline-block; width:10rem; height:2.8rem; padding-left:1rem; overflow:hidden; background:url('/resources/mileage/img/logo.png') left top no-repeat; background-size:100% auto; font-size:0; line-height:0; text-indent:-1000px;}
+.popup .btn_basic{display:inline-block; margin:0 auto; min-width:7.5rem; height:3.5rem; background-color:#54524f;}
+.popup .pop_con{}
+.popup .pop_con .ctit {text-align: center;font-size:2.3rem;background:#00854a;color:#fff;  padding: 2.0rem 0 2.0rem 0rem;}
+.popup .pconts {padding:0 15px;}
+
+
+.special {position:absolute;left:50%;top:50%;width:80%;transform:translate(-50%, -50%);-webkit-transform:translate(-50%, -50%);padding-bottom:0;}
+.special .spcl_list dt {height:4.6rem;overflow:hidden; white-space:nowrap; padding:1.4rem; border-bottom:1px solid #d9d9d9;font-size:1.5rem;font-weight:bold;color:#167f82;}
+.special .spcl_list dd {position:relative; padding:1.4rem; border-bottom:1px solid #d9d9d9;font-size:1.5rem;white-space:nowrap;}
+.special .spcl_list dd:last-child {border:none;}
+.special .spcl_list .ok {position:absolute;right:2rem;top:50%;border:1px solid #e77111; border-radius:10rem;padding:.2rem 1.4rem; font-size:1.1rem;color:#e77111;line-height:normal;margin-top:-1rem;}
+.special .btn_close {position:absolute;display:inline-block; right:0;top:0;width:4.6rem;height:4.6rem;border-left:1px solid #d9d9d9;}
+.special .btn_close span {display:inline-block;width:1.7rem;height:1.7rem;margin:1.4rem 0  0 1.4rem;background:url('/resources/mileage/img/bg_icon.png') -7.5rem -4.5rem no-repeat;background-size:10rem auto; text-indent:-10000em;}
+
+
+/* 사진예시 팝업 */
+.popup2{z-index:100;position:absolute;top:0px;left:0%;width:90%;margin:2rem 5%;text-align:left;background-color:#fff}
+.popup2 .pop_tit{margin-bottom:0;padding:1.1rem 5rem 1.5rem 1.5rem;color:#fff;font-size:2rem;line-height:2.4rem;background:#00854a;text-align: left}
+.popup2 .pop_cont{padding:2rem 1.2rem}
+.box_img{margin-bottom:1rem;padding:1.4rem;background-color:#f8f8f8;border:1px solid #d4d4d4}
+.box_img dt{margin-bottom:1rem;color:#333;font-weight:700;font-size:1.7rem;line-height:2.2rem}
+.box_img dd p{padding-top:1rem;color:#666;font-size:1.4rem;line-height:1.8rem;letter-spacing:-0.1rem}
+.box_img img{width:100%}
+.txt_add{margin:1rem .5rem;color:#666;font-size:1.4rem;line-height:1.9rem}
+.popup2 .btn_close{position:absolute;display:block;padding:1.5rem;right:1rem;top:1rem;width:1.8rem;height:1.8rem;background:url('/resources/mileage/img/btn_close2.png') center no-repeat;background-size:1.8rem;}
+.popup2 .btn_bottom{padding:1.2rem 0 1.5rem;height:5rem;background-color:#50555b;text-align:center}
+.hide_txt{display:inline-block;overflow:hidden;position:absolute;width:0;height:0;font-size:1px}

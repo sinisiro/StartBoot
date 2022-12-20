@@ -167,7 +167,7 @@ function callBack(method){
                     ,"전송중... "+ Number(i+1) + "/" + imgfile_selector.imageMap.size
                     ,true);
 
-//
+
 //            $.post("/test/fileUploadJson3", {
 //                seq: i,
 //                val : img_b64Data,
@@ -272,7 +272,7 @@ function callBack(method){
 
     sendImage() 로 하면 파일 처리 진행현황을 표시할수 없는 문제발생
     for문을 돌며 로딩바띄워주고 ajax를 모두 수행해 버리기 때문에, 기대했던 서버 처리후에 로딩바가 바뀌것을 할 수 없었음.
-    그래서 sendImageLoadingSync 수행 ->로딩바 띄워줌->콜백에서 파일처리 다안되있으면 sendImageLoadingSync 호출 로 변경하여 해결.
+    그래서   수행 ->로딩바 띄워줌->콜백에서 파일처리 다안되있으면 sendImageLoadingSync 호출 로 변경하여 해결.
     */
 
 	function sendImageLoadingSync()

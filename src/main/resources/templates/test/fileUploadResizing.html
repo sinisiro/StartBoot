@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+  <div th:replace="test/loading :: loading" />
+  <!--<head>-->
+  <title>Hello</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<form name="form1" id="form1" method="post" >
+  <link rel="stylesheet" href="../static/css_mileage/main.css"/>
+  <script type="text/javascript" src="../static/test/uploadResizing.js"></script>
+  <script type="text/javascript" src="../static/util/ajaxutil.js"></script>
+  <script type="text/javascript" src="../static/util/exif.js"></script>
+<div class="container">
+  <div th:replace="fragments/bodyHeader :: bodyHeader" />
+  <div class="pop_con">
+  <div class="pconts">
+    <div class="img_rider2">
+      <h4 class="h3">사진 업로드(주행거리 방식)</h4>
+    <div id="img_sample" class="img1"><img id="preview1" src="../static/img/sample.jpg" alt="사진등록(예시)" style="width:50%"></div>
+      <div class="btn-box1">    <!-- 버튼 2개 수평-->
+        <button type="button" onclick="$('#file1_1').click()">사진촬영</button>
+        <button type="button" onclick="$('#file1_2').click()" class="org">불러오기</button>
+      </div>
+      <div>
+        <input type="file" id="file1_1" name="file" accept="image/*" capture="camera" />
+        <input type="file" id="file1_2" name="file" accept="image/*" />
+      </div>
+
+    <div class="btn-box2 pt20">
+      <button type="button" id="regBtn" >등록하기</button>
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+  <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+
+</form>
+</body>
+</html>
