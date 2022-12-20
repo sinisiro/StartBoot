@@ -411,7 +411,7 @@ public class TotalTestController {
             System.out.println(multipartFile.getOriginalFilename());
         }
 
-        String UPLOADED_FOLDER = "./uploadResized/";
+        String UPLOADED_FOLDER = "./upload/";
 
         File Folder = new File(UPLOADED_FOLDER);
 
