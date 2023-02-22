@@ -52,7 +52,6 @@ public class TotalTestController {
         String formatedNow = now.format(formatter);
 
 
-
         log.info("=[앱이 시작되었습니다.]= ["+ LocalDate.now() +" " + formatedNow +"]");
         return "test/init";
     }
@@ -476,5 +475,23 @@ public class TotalTestController {
         return mav;
 //        return "test/fileUploadResizingEnd";
     }
+
+
+    //23.01.31 chatGPT가 알려준 파일 업로드
+    @RequestMapping(value="/fileUploadGPT",  method = RequestMethod.GET)
+    public String fileUploadGPT(ModelAndView mav, HttpServletRequest req, HttpServletResponse res){
+
+        return "test/fileUploadGPT";
+    }
+
+
+    //23.02.03 ToastUI 테스트
+    @RequestMapping(value="/ToastUI",  method = RequestMethod.GET)
+    public String ToastUI(ModelAndView mav, HttpServletRequest req, HttpServletResponse res){
+
+        return "test/ToastUI";
+    }
+
+
 
 }

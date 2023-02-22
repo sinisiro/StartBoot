@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="fragments/header :: header">
+    <!--<head>-->
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader" />
+    ** 네이티브 이미지 리사이징 파일 업로드 테스트 페이지<br>
+    web 파일 업로드 ->네이티브 수신 및 리사이징 -> web으로 다시 전달
+    <form id="upload-form">
+        <p>
+            <input type="file" id="image-file">
+            <button onclick="uploadImage()" class="btn-primary badge">Upload</button>
+        </p>
+
+    </form>
+    <div th:replace="fragments/footer :: footer" /> </div> <!-- /container -->
+</div>
+
+</body>
+
+<script>
+// Select the file input element
+var input = document.querySelector('input[type="file"]');
+
+
+function uploadImage() {
+  var file = input.files[0];
+  var reader = new FileReader();
+
+  reader.onload = function() {
+     var data = new Uint8Array(reader.result);
+    window.webkit.messageHandlers.callAppDirect.postMessage(Array.from(data));
+  };
+
+  reader.readAsArrayBuffer(file);
+}
+
+</script>

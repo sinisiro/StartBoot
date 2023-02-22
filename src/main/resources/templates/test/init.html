@@ -12,6 +12,8 @@
     <div class="container">
         <div th:replace="fragments/bodyHeader :: bodyHeader" />
         <p><a href="/test/fileUploadForm">파일첨부</a></p>
+        <p><a href="/test/fileUploadGPT">파일첨부ChatGPT</a></p>
+        <p><a href="/test/ToastUI">Toast UI</a></p>
         <!--    <p><a href="/test/fileUploadRest">파일첨부Rest</a></p>-->
         변수임 : <input type="text" id="val" name="val" class="inp-base" value="140101" placeholder="전송데이터">
         <div class="jumbotron"> <h1>HELLO MS</h1>
@@ -44,7 +46,7 @@
             <p>
                 <button id="btnCrypt" type="submit" class="btn btn-lg btn-info">AES256</button>
                 <button id="btnBase64" type="submit" class="btn btn-lg btn-primary">BASE64</button>
-                <button id="btnAESBase" type="submit" class=" btn-lg btn-primary">AES+BASE</button>
+                <button id="btnAESBase" type="submit" class="btn-lg btn-primary">AES+BASE</button>
             </p>
 
             <p class="lead">팝업테스트 </p>

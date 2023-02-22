@@ -18,7 +18,8 @@ public class AES256Cipher {
 
     //    final static String secretKey = "2gdd7c49ef427e0d20g0g6bf95264627"; //32bit
 //    final static String secretKey = "DongbuMobileDM15880100!qaz2wsx3e"; //32bit
-    final static String secretKey = "01234567890123456789012345678912"; //32bit
+//    final static String secretKey = "01234567890123456789012345678912"; //32bit 모바일포털 서버
+    final static String secretKey = "mobilePortalDBSecuSystemPrivateW"; //32bit 모바일포털 비밀번호 초기화
     static String IV = ""; //16bit
 
     public static AES256Cipher getInstance() {

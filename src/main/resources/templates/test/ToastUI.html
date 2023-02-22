@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="fragments/header :: header">
+    <!--<head>-->
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+<div class="container">
+    <meta charset="UTF-8">
+    <link rel="stylesheet", href="../static/tui-grid/dist/tui-grid.css">
+    <script src="../static/tui-grid/dist/tui-grid.js"></script>
+    <script type="text/javascript" src="../static/test/ToastUI.js"></script>
+
+
+    <script src="https://uicdn.toast.com/chart/latest/toastui-chart.min.js"></script>
+    <link rel="stylesheet" href="https://uicdn.toast.com/chart/latest/toastui-chart.min.css" />
+    <img id="img" style="width:100%;">
+    <div id="grid"></div>
+    <div id="chart"></div>
+    <div id="chart2"></div>
+    <div th:replace="fragments/footer :: footer" /> </div> <!-- /container -->
+</div>
+
+</body>
+
