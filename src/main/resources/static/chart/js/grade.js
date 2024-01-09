@@ -10,131 +10,131 @@ $(".login_btn_con_btn").click(function(event){
 
 
 Chart.defaults.font.family = 'Noto Sans KR';
-
-var chartArea = document.getElementById('myChart1').getContext('2d');
-var myChart = new Chart(chartArea, {
-  type: 'bar',
-  data: {
-    labels: ['', '', '', '', ''],
-    datasets: [{
-      label: '',
-      data: [157, 148, 111, 150, 191],
-      backgroundColor: ['#FFD2BA', '#FFD2BA', '#E3F4E9', '#E3F4E9', '#FFD2BA'],
-      borderColor: ['#CA4C07', '#CA4C07', '#157941', '#157941', '#CA4C07'],
-      borderRadius: '5',
-      borderWidth: 1,
-      order: 2,
-    },
-    {
-      type: 'line', // 라인 차트 추가
-      label: '',
-      data: [140, 100, 111, 150, 135],
-      borderColor: '#767676',
-      fill: false,
-      order: 1,
-      pointStyle: 'circle',
-      pointRadius: 4,
-      pointBorderWidth: 2,
-      pointBackgroundColor: '#535353',
-      pointBorderColor: 'white',
-      shadowBlur: 3,
-      shadowOffsetX: 3,
-      shadowOffsetY: 10,
-    }]
-  },
-  options: {
-    maxBarThickness: getMaxBarThickness(),
-    scales: {
-      x: {
-        beginAtZero: true,
-        grid: {
-          color: 'transparent',
-        },
-        ticks: {
-          color: 'transparent',
-        },
-        barThickness: 20,
-      },
-      y: {
-        beginAtZero: true,
-        stacked: true,
-        grid: {
-          color: 'transparent',
-        },
-        display: false,
-      }
-    },
-    plugins: {
-      legend: {
-        display: false,
-      },
-      tooltip: {
-        enabled: false
-      },
-    },
-  }
-});
-
-var chartArea2 = document.getElementById('myChart2').getContext('2d');
-var myChart = new Chart(chartArea2, {
-  type: 'bar',
-  data: {
-    labels: ['', '', '', ''],
-    datasets: [{
-      label: '',
-      data: [157, 111, 111, 165,],
-      backgroundColor: ['#FFD2BA', '#E3F4E9', '#E3F4E9', '#FFD2BA'],
-      borderColor: ['#CA4C07', '#157941', '#157941', '#CA4C07'],
-      borderRadius: '5',
-      borderWidth: 1,
-      order: 2,
-    },
-    {
-      type: 'line', // 라인 차트 추가
-      label: '',
-      data: [140, 115, 111, 150,],
-      borderColor: '#767676',
-      fill: false,
-      order: 1,
-      pointStyle: 'circle',
-      pointRadius: 4,
-      pointBorderWidth: 2,
-      pointBackgroundColor: '#535353',
-      pointBorderColor: 'white'
-    }]
-  },
-  options: {
-    maxBarThickness: getMaxBarThickness(),
-    scales: {
-      x: {
-        beginAtZero: true,
-        grid: {
-          color: 'transparent',
-        },
-        ticks: {
-          color: 'transparent',
-        },
-        barThickness: 20,
-      },
-      y: {
-        beginAtZero: true,
-        stacked: true,
-        grid: {
-          color: 'transparent',
-        },
-        display: false,
-      }
-    },
-    plugins: {
-      legend: {
-        display: false,
-      },
-      tooltip: {
-        enabled: false
-      },
-    },
-  }
-});
+//
+//var chartArea = document.getElementById('myChart1').getContext('2d');
+//var myChart = new Chart(chartArea, {
+//  type: 'bar',
+//  data: {
+//    labels: ['', '', '', '', ''],
+//    datasets: [{
+//      label: '',
+//      data: [157, 148, 111, 150, 191],
+//      backgroundColor: ['#FFD2BA', '#FFD2BA', '#E3F4E9', '#E3F4E9', '#FFD2BA'],
+//      borderColor: ['#CA4C07', '#CA4C07', '#157941', '#157941', '#CA4C07'],
+//      borderRadius: '5',
+//      borderWidth: 1,
+//      order: 2,
+//    },
+//    {
+//      type: 'line', // 라인 차트 추가
+//      label: '',
+//      data: [140, 100, 111, 150, 135],
+//      borderColor: '#767676',
+//      fill: false,
+//      order: 1,
+//      pointStyle: 'circle',
+//      pointRadius: 4,
+//      pointBorderWidth: 2,
+//      pointBackgroundColor: '#535353',
+//      pointBorderColor: 'white',
+//      shadowBlur: 3,
+//      shadowOffsetX: 3,
+//      shadowOffsetY: 10,
+//    }]
+//  },
+//  options: {
+//    maxBarThickness: getMaxBarThickness(),
+//    scales: {
+//      x: {
+//        beginAtZero: true,
+//        grid: {
+//          color: 'transparent',
+//        },
+//        ticks: {
+//          color: 'transparent',
+//        },
+//        barThickness: 20,
+//      },
+//      y: {
+//        beginAtZero: true,
+//        stacked: true,
+//        grid: {
+//          color: 'transparent',
+//        },
+//        display: false,
+//      }
+//    },
+//    plugins: {
+//      legend: {
+//        display: false,
+//      },
+//      tooltip: {
+//        enabled: false
+//      },
+//    },
+//  }
+//});
+//
+//var chartArea2 = document.getElementById('myChart2').getContext('2d');
+//var myChart = new Chart(chartArea2, {
+//  type: 'bar',
+//  data: {
+//    labels: ['', '', '', ''],
+//    datasets: [{
+//      label: '',
+//      data: [157, 111, 111, 165,],
+//      backgroundColor: ['#FFD2BA', '#E3F4E9', '#E3F4E9', '#FFD2BA'],
+//      borderColor: ['#CA4C07', '#157941', '#157941', '#CA4C07'],
+//      borderRadius: '5',
+//      borderWidth: 1,
+//      order: 2,
+//    },
+//    {
+//      type: 'line', // 라인 차트 추가
+//      label: '',
+//      data: [140, 115, 111, 150,],
+//      borderColor: '#767676',
+//      fill: false,
+//      order: 1,
+//      pointStyle: 'circle',
+//      pointRadius: 4,
+//      pointBorderWidth: 2,
+//      pointBackgroundColor: '#535353',
+//      pointBorderColor: 'white'
+//    }]
+//  },
+//  options: {
+//    maxBarThickness: getMaxBarThickness(),
+//    scales: {
+//      x: {
+//        beginAtZero: true,
+//        grid: {
+//          color: 'transparent',
+//        },
+//        ticks: {
+//          color: 'transparent',
+//        },
+//        barThickness: 20,
+//      },
+//      y: {
+//        beginAtZero: true,
+//        stacked: true,
+//        grid: {
+//          color: 'transparent',
+//        },
+//        display: false,
+//      }
+//    },
+//    plugins: {
+//      legend: {
+//        display: false,
+//      },
+//      tooltip: {
+//        enabled: false
+//      },
+//    },
+//  }
+//});
 
 function getMaxBarThickness() {
   var flexWrapPcWidth = document.querySelector('.flex_wrap_pc').offsetWidth;
