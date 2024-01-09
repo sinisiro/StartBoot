@@ -1,0 +1,209 @@
+ @font-face {
+ font-family: 'Noto Sans KR';
+ font-style: normal;
+ font-weight: 100;
+ src: url(../fonts/NotoSansKR-Thin.ttf) format('truetype'),
+ }
+@font-face {
+ font-family: 'Noto Sans KR';
+ font-style: normal;
+ font-weight: 300;
+ src: url(../fonts/NotoSansKR-Light.ttf) format('truetype'),
+ }
+@font-face {
+ font-family: 'Noto Sans KR';
+ font-style: normal;
+ font-weight: 400;
+ src: url(../fonts/NotoSansKR-Regular.ttf) format('truetype'),
+ }
+@font-face {
+ font-family: 'Noto Sans KR';
+ font-style: normal;
+ font-weight: 500;
+ src: url(../fonts/NotoSansKR-Medium.ttf) format('truetype'),
+ }
+@font-face {
+ font-family: 'Noto Sans KR';
+ font-style: normal;
+ font-weight: 700;
+ src: url(../fonts/NotoSansKR-Bold.ttf) format('truetype'),
+ }
+@font-face {
+ font-family: 'Noto Sans KR';
+ font-style: normal;
+ font-weight: 900;
+ src: url(../fonts/NotoSansKR-Black.ttf) format('truetype'),
+ }
+
+ @font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url(../fonts/Roboto-Medium.ttf) format('truetype'),
+  }
+ @font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/Roboto-Bold.ttf) format('truetype'),
+  }
+html {
+ font-size : 62.5%;
+ }
+body {
+ margin: 0;
+ }
+
+.wrap div,
+.wrap span,
+.wrap applet,
+.wrap object,
+.wrap iframe,
+.wrap h1,
+.wrap h2,
+.wrap h3,
+.wrap h4,
+.wrap h5,
+.wrap h6,
+.wrap p,
+.wrap blockquote,
+.wrap pre,
+.wrap a,
+.wrap abbr,
+.wrap acronym,
+.wrap address,
+.wrap big,
+.wrap cite,
+.wrap code,
+.wrap del,
+.wrap dfn,
+.wrap em,
+.wrap img,
+.wrap ins,
+.wrap kbd,
+.wrap q,
+.wrap s,
+.wrap samp,
+.wrap small,
+.wrap strike,
+.wrap strong,
+.wrap sub,
+.wrap sup,
+.wrap tt,
+.wrap var,
+.wrap b,
+.wrap u,
+.wrap i,
+.wrap center,
+.wrap dl,
+.wrap dt,
+.wrap dd,
+.wrap ol,
+.wrap ul,
+.wrap li,
+.wrap fieldset,
+.wrap form,
+.wrap label,
+.wrap legend,
+.wrap table,
+.wrap caption,
+.wrap tbody,
+.wrap tfoot,
+.wrap thead,
+.wrap tr,
+.wrap th,
+.wrap td,
+.wrap article,
+.wrap aside,
+.wrap canvas,
+.wrap details,
+.wrap embed,
+.wrap figure,
+.wrap figcaption,
+.wrap footer,
+.wrap header,
+.wrap hgroup,
+.wrap menu,
+.wrap nav,
+.wrap output,
+.wrap ruby,
+.wrap section,
+.wrap summary,
+.wrap time,
+.wrap mark,
+.wrap audio,
+.wrap video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 100%;
+ }
+
+.wrap article,
+.wrap aside,
+.wrap details,
+.wrap figcaption,
+.wrap figure,
+.wrap footer,
+.wrap header,
+.wrap hgroup,
+.wrap menu,
+.wrap nav,
+.wrap section {
+ display: block;
+ }
+
+.wrap {
+ font-size: 16px;
+ color: #333;
+ position: relative;
+ font-family: Noto Sans KR, sans-serif;
+ word-break : keep-all;
+ -webkit-font-smoothing: antialiased;
+ -webkit-text-size-adjust : none;
+ -ms-text-size-adjust : none;
+ -moz-text-size-adjust : none;
+ -o-text-size-adjust : none;
+ text-rendering: optimizeLegibility !important;
+ }
+
+.wrap ol,
+.wrap ul {
+ list-style: none;
+ }
+
+.wrap table {
+ border-collapse: collapse;
+ border-spacing: 0;
+ }
+
+.wrap address {
+ font-style: normal;
+ }
+
+.wrap a {
+ color: #333;
+ text-decoration: none;
+ }
+
+.wrap img {
+ border: 0;
+ vertical-align: top;
+ }
+
+
+
+.wrap .hidden {
+ display: block;
+ position: absolute;
+ left: -1000%;
+ width: 1px;
+ height: 1px;
+ overflow: hidden;
+ color: #fff;
+ }
+
+.wrap .flex_wrap {
+ display: flex;
+ justify-content: space-between;
+ }

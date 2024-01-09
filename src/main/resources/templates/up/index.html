@@ -1,0 +1,60 @@
+
+<!DOCTYPE HTML>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui"/>
+    <title>kukudocs</title>
+    <link href="../static/up/assets/css/mobile.css" rel="stylesheet" type="text/css" />
+    <script type="module">
+        import * as kukuimg from "../static/up/assets/js/kukuimgApi.js";
+        window.kukuimg = kukuimg;
+    </script>
+    <script type="text/javascript" src="../static/up/assets/js/kkuploader.bundle.js"></script>
+</head>
+<body>
+<div id="container">
+업로드 테스트
+</div>
+
+<div id="kkloader">
+</div>
+
+
+<script type="text/javascript">
+console.log("** test start ** ");
+    
+    var uploader = new kkUploader("#kkloader",{
+        url: "/up/api/upload",
+        // upload ----------------------- 
+        method: "post",
+        maxFiles : 1,
+        maxFilesize : 1024, //MB
+        paramName : "file",
+        headers : null,
+        params : [],
+
+        uploadMultiple : false,
+
+        // image convert-----------------------
+        quality: "50",
+        resize: 3000,
+        targetExt : "jpg",
+        acceptedExt : ['bmp', 'jpg', 'png', 'jpeg', 'tif', 'gif', 'tiff'],
+        preview : false,
+
+        // thumbnail -----------------------
+        createImageThumbnails : true,
+        thumbnailWidth : 100,
+        thumbnailHeight : 100,
+
+        // callback -----------------------
+        completeCallback : function(){
+            console.log("completeCallback");
+        },
+        uploadCallback : function(data){
+            console.log("uploadCallback");
+        }
+    });
+</script>
+
+</body>

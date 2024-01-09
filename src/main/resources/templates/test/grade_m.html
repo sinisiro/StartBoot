@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>DB 손해보험-건강성적표</title>
+    <link rel="stylesheet" href="../static/chart/css/dsa_common.css" />
+    <link rel="stylesheet" href="../static/chart/css/grade_m.css" />
+    <script src="../static/chart/js/chart.js"></script>
+    <script src="../static/chart/js/jquery.min.js"></script>
+    <script src="../static/chart/js/common.js" defer></script>
+    <script src="../static/chart/js/grade.js" defer></script>
+    <script src="../static/chart/js/grade_m.js" defer></script>
+</head>
+
+<body>
+<div class="wrap">
+
+    <div class="contents">
+
+
+        <section class="health_grades">
+            <div class="flex_wrap">
+                <div class="flex_left">
+                    <h2>종합 성적</h2>
+                    <p>박종옥님의 건강 성적은<br>
+                        <span id="grades">F등급</span>이에요
+                    </p>
+                    <div class="report_bg">
+                        <img class="report_bg0" src="../static/chart/assets/report_bg0.png" alt="">
+                        <img class="report_bg1" src="../static/chart/assets/report_bg1.png" alt="">
+                        <img class="report_bg2" src="../static/chart/assets/report_bg2.png" alt="">
+                        <img class="report_stamp" src="../static/chart/assets/stamp_f.png" alt="">
+                    </div>
+                </div>
+                <!-- <div class="flex_right">
+                  <img src="../assets/stamp_f.png" alt="">
+                </div> -->
+            </div>
+        </section>
+
+
+        <section class="health_rank">
+            <div class="flex_wrap">
+                <p class="rank_tit">
+                    <span>40대 여성 100명 중</span>
+                    나의 건강 등수는?
+                </p>
+                <p class="score"><span>98</span>등</p>
+            </div>
+            <p class="rank_txt pc_txt">9가지 질환을 종합한 건강 등수는 <span class="rank_num">98등(F등급)</span> 으로 <span class="rank_nick">위험군</span>이기 때문에 건강에 더욱 유의하세요.
+            </p>
+            <p class="rank_txt mob_txt">9가지 질환을 종합한 건강 등수는 <span class="rank_num">98등(F등급)</span>
+                <br>으로 <span class="rank_nick">위험군</span>이기 때문에 건강에 더욱 유의하세요.
+            </p>
+            <p class="rank_txt mob_txt mob_txt_min">9가지 질환을 종합한 건강 등수는 <span class="rank_num">98등(F등급)</span>
+                으로 <span class="rank_nick">위험군</span>이기 때문에 건강에 더욱 유의하세요.
+            </p>
+        </section>
+        <p class="standard_txt"><span></span>2023년 12월 23일 건강검진 기준</p>
+
+
+        <section class="call_box">
+            <div class="call_box_wrap">
+                <div class="flex_wrap">
+                    <p>내 보장이 충분한지 알고싶다면?
+                        <a href="#">내 보험 바로알기 <span></span></a>
+                    </p>
+                    <img src="../static/chart/assets/dounut.png" alt="">
+                </div>
+                <p class="call_box_txt">※본 리포트는 고객님이 최근에 받은 건강검진 결과를 기준으로 분석한 결과이므로 현재의 건강상태와는 다를 수 있습니다.</p>
+            </div>
+        </section>
+
+
+        <div class="flex_wrap flex_wrap_pc">
+            <section class="health_caution">
+                <h2>주의가 필요한 항목</h2>
+                <div class="health_caution_box">
+                    <div class="health_caution_img">
+                        <img src="../static/chart/assets/disease1.png" alt="">
+                    </div>
+                    <p class="health_caution_top_txt">40대 여자 평균보다<br></p>
+                    <p class="health_caution_bot_txt"><span>폐암</span>발병률이 높아요!</p>
+                    <div class="health_caution_rank flex_wrap">
+                        <div class="rank_graph rank_graph_1">
+                            <span class="ranking">1순위</span>
+                            <span class="rank_arrow">2.3배↑</span>
+                            <p class="rank_nick">폐암</p>
+                        </div>
+                        <div class="rank_graph rank_graph_2">
+                            <span class="ranking">2순위</span>
+                            <span class="rank_arrow">2.1배↑</span>
+                            <p class="rank_nick">대장암</p>
+                        </div>
+                        <div class="rank_graph rank_graph_3">
+                            <span class="ranking">3순위</span>
+                            <span class="rank_arrow">1.9배↑</span>
+                            <p class="rank_nick">위암</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="health_opinion">
+                <div class="health_opinion_wrap">
+                    <div class="flex_wrap">
+                        <h2>종합 의견</h2>
+                        <div class="toggle_wrap">
+                            <input type="checkbox" id="toggle" class="toggleCheckbox" />
+                            <label for="toggle" class="toggleContainer">
+                                <div>암질환</div>
+                                <div>기타질환</div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="pc_chart_wrap">
+                        <div class="chart">
+                            <p>내 위험도</p>
+                            <div class="disease_chart disease_chart1">
+                                <canvas id="myChart1" width="287" height="230"></canvas>
+                                <ul class="flex_wrap">
+                                    <li class="disease_chart_tit red">위암</li>
+                                    <li class="disease_chart_tit red">폐암</li>
+                                    <li class="disease_chart_tit">대장암</li>
+                                    <li class="disease_chart_tit">유방암</li>
+                                    <li class="disease_chart_tit red">간암</li>
+                                </ul>
+                                <span>이 선을 넘으면 안 좋아요</span>
+                            </div>
+                            <div class="disease_chart disease_chart2">
+                                <canvas id="myChart2" width="287" height="230"></canvas>
+                                <ul class="flex_wrap">
+                                    <li class="disease_chart_tit red">심장질환</li>
+                                    <li class="disease_chart_tit">뇌졸중</li>
+                                    <li class="disease_chart_tit">당뇨</li>
+                                    <li class="disease_chart_tit red">치매</li>
+                                </ul>
+                            </div>
+                            <div class="flex_wrap disease_chart_txt">
+                                <img src="../static/chart/assets/point.png" alt="">
+                                <p>40대 여성 정상군의 위험도</p>
+                                <img src="../static/chart/assets/green.png" alt="">
+                                <p>안전</p>
+                                <img src="../static/chart/assets/red.png" alt="">
+                                <p>위험</p>
+                            </div>
+                        </div>
+                        <p class="health_opinion_txt">40대 여성 100명 중 <span>98등</span>에 해당합니다</p>
+                        <p class="health_opinion_txt"><span>적극적인 건강대비</span>가 필요합니다</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <section class="health_summary">
+            <h2>종합 요약</h2>
+            <div class="stet_box flex_wrap">
+                <ul class="flex_wrap health_summary_list">
+                    <li class="very_dangerous_btn">
+                        <div>
+                            <p class="step_tit">매우 위험</p>
+                            <p class="step_num">5</p>
+                        </div>
+                    </li>
+                    <li class="dangerous_btn">
+                        <div>
+                            <p class="step_tit">위험</p>
+                            <p class="step_num">2</p>
+                        </div>
+                    </li>
+                    <li class="caution_btn">
+                        <div>
+                            <p class="step_tit">주의</p>
+                            <p class="step_num">1</p>
+                        </div>
+                    </li>
+                    <li class="relief_btn">
+                        <div>
+                            <p class="step_tit">안심</p>
+                            <p class="step_num">1</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="disease_list very_dangerous">
+                <p class="summary_msg mob_txt">
+                    <span class="disease_type">폐암, 대장암, 위암, 유방암, 치매</span>
+                    의 발병률이<br>
+                    <span class="disease_step">매우 위험</span>
+                    입니다.
+                </p>
+                <p class="summary_msg pc_txt">
+                    <span class="disease_type">폐암, 대장암, 위암, 유방암, 치매</span>
+                    의 발병률이 <span class="disease_step">매우 위험</span>
+                    입니다.
+                </p>
+                <ul>
+                    <li>
+                        <div class="flex_wrap disease_list_box">
+                            <img src="../static/chart/assets/disease1.png" alt="">
+                            <div class="disease_box">
+                                <p class="disease_tit">폐암</p>
+                                <div class="chart">
+                                    <span class="chart_bar"></span>
+                                </div>
+                                <div class="flex_wrap disease_box_el">
+                                    <p class="percentage">발병률</p>
+                                    <p class="risk">매우위험</p>
+                                </div>
+                                <div class="flex_wrap">
+                                    <p class="amount">평균 급여비</p>
+                                    <p class="won"><span>11,817,960 </span>원</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex_wrap disease_list_box">
+                            <img src="../static/chart/assets/disease2.png" alt="">
+                            <div class="disease_box">
+                                <p class="disease_tit">대장암</p>
+                                <div class="chart">
+                                    <span class="chart_bar"></span>
+                                </div>
+                                <div class="flex_wrap disease_box_el">
+                                    <p class="percentage">발병률</p>
+                                    <p class="risk">매우위험</p>
+                                </div>
+                                <div class="flex_wrap">
+                                    <p class="amount">평균 급여비</p>
+                                    <p class="won"><span>11,817,960 </span>원</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex_wrap disease_list_box">
+                            <img src="../static/chart/assets/disease3.png" alt="">
+                            <div class="disease_box">
+                                <p class="disease_tit">위암</p>
+                                <div class="chart">
+                                    <span class="chart_bar"></span>
+                                </div>
+                                <div class="flex_wrap disease_box_el">
+                                    <p class="percentage">발병률</p>
+                                    <p class="risk">매우위험</p>
+                                </div>
+                                <div class="flex_wrap">
+                                    <p class="amount">평균 급여비</p>
+                                    <p class="won"><span>11,817,960 </span>원</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex_wrap disease_list_box">
+                            <img src="../static/chart/assets/disease4.png" alt="">
+                            <div class="disease_box">
+                                <p class="disease_tit">유방암</p>
+                                <div class="chart">
+                                    <span class="chart_bar"></span>
+                                </div>
+                                <div class="flex_wrap disease_box_el">
+                                    <p class="percentage">발병률</p>
+                                    <p class="risk">매우위험</p>
+                                </div>
+                                <div class="flex_wrap">
+                                    <p class="amount">평균 급여비</p>
+                                    <p class="won"><span>11,817,960 </span>원</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex_wrap disease_list_box">
+                            <img src="../static/chart/assets/disease5.png" alt="">
+                            <div class="disease_box">
+                                <p class="disease_tit">치매</p>
+                                <div class="chart">
+                                    <span class="chart_bar"></span>
+                                </div>
+                                <div class="flex_wrap disease_box_el">
+                                    <p class="percentage">발병률</p>
+                                    <p class="risk">매우위험</p>
+                                </div>
+                                <div class="flex_wrap">
+                                    <p class="amount">평균 급여비</p>
+                                    <p class="won"><span>11,817,960 </span>원</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="disease_list dangerous">
+                <p class="summary_msg mob_txt">
+                    <span class="disease_type">당뇨, 간암</span>
+                    의 발병률이<br>
+                    <span class="disease_step">위험</span>
+                    입니다.
+                </p>
+                <p class="summary_msg pc_txt">
+                    <span class="disease_type">당뇨, 간암</span>
+                    의 발병률이 <span class="disease_step">위험</span>
+                    입니다.
+                </p>
+                <ul>
+                    <li>
+                        <div class="flex_wrap disease_list_box">
+                            <img src="../static/chart/assets/disease6.png" alt="">
+                            <div class="disease_box">
+                                <p class="disease_tit">간암</p>
+                                <div class="chart">
+                                    <span class="chart_bar"></span>
+                                </div>
+                                <div class="flex_wrap disease_box_el">
+                                    <p class="percentage">발병률</p>
+                                    <p class="risk">위험</p>
+                                </div>
+                                <div class="flex_wrap">
+                                    <p class="amount">평균 급여비</p>
+                                    <p class="won"><span>11,817,960 </span>원</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex_wrap disease_list_box">
+                            <img src="../static/chart/assets/disease7.png" alt="">
+                            <div class="disease_box">
+                                <p class="disease_tit">당뇨</p>
+                                <div class="chart">
+                                    <span class="chart_bar"></span>
+                                </div>
+                                <div class="flex_wrap disease_box_el">
+                                    <p class="percentage">발병률</p>
+                                    <p class="risk">위험</p>
+                                </div>
+                                <div class="flex_wrap">
+                                    <p class="amount">평균 급여비</p>
+                                    <p class="won"><span>11,817,960 </span>원</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="disease_list caution">
+                <p class="summary_msg mob_txt">
+                    <span class="disease_type">뇌졸중</span>
+                    의 발병률이<br>
+                    <span class="disease_step">주의</span>
+                    입니다.
+                </p>
+                <p class="summary_msg pc_txt">
+                    <span class="disease_type">뇌졸중</span>
+                    의 발병률이 <span class="disease_step">주의</span>
+                    입니다.
+                </p>
+                <ul>
+                    <li>
+                        <div class="flex_wrap disease_list_box">
+                            <img src="../static/chart/assets/disease8.png" alt="">
+                            <div class="disease_box">
+                                <p class="disease_tit">뇌졸중</p>
+                                <div class="chart">
+                                    <span class="chart_bar"></span>
+                                </div>
+                                <div class="flex_wrap disease_box_el">
+                                    <p class="percentage">발병률</p>
+                                    <p class="risk">주의</p>
+                                </div>
+                                <div class="flex_wrap">
+                                    <p class="amount">평균 급여비</p>
+                                    <p class="won"><span>11,817,960 </span>원</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="disease_list relief">
+                <p class="summary_msg mob_txt">
+                    <span class="disease_type">심장질환</span>
+                    의 발병률이<br>
+                    <span class="disease_step">안심</span>
+                    입니다.
+                </p>
+                <p class="summary_msg pc_txt">
+                    <span class="disease_type">심장질환</span>
+                    의 발병률이 <span class="disease_step">안심</span>
+                    입니다.
+                </p>
+                <ul>
+                    <li>
+                        <div class="flex_wrap disease_list_box">
+                            <img src="../static/chart/assets/disease9.png" alt="">
+                            <div class="disease_box">
+                                <p class="disease_tit">심장질환</p>
+                                <div class="chart">
+                                    <span class="chart_bar"></span>
+                                </div>
+                                <div class="flex_wrap disease_box_el">
+                                    <p class="percentage">발병률</p>
+                                    <p class="risk">안심</p>
+                                </div>
+                                <div class="flex_wrap">
+                                    <p class="amount">평균 급여비</p>
+                                    <p class="won"><span>11,817,960 </span>원</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <p class="health_summary_txt">※본 리포트는 고객님이 최근에 받은 건강검진 결과를 기준으로 분석한 결과이므로 현재의 건강상태와는 다를 수 있습니다.</p>
+        </section>
+
+        <section id="modalWrap">
+            <div class="modalContent content">
+                <div class="modalBody">
+
+                    <button id="closeBtn">
+                        <span class="hidden">닫기</span>
+                    </button>
+
+
+                    <div class="disease_con_box">
+                        <div class="disease_con_wrap">
+                            <section class="disease_con">
+                                <img src="../static/chart/assets/disease1.png" alt="">
+                                <h2 id="disease_name">폐암
+                                    <span id="risk_level">매우 위험</span>
+                                </h2>
+
+                                <div class="rank_con">
+                                    <div class="flex_wrap top_con">
+                                        <p>40대 여성 100명 중<br>
+                                            건강 등수</p>
+                                        <p><span>98</span>등</p>
+                                    </div>
+                                    <div class="flex_wrap bot_con">
+                                        <div class="left_txt">
+                                            <p>가장 큰 발병요인</p>
+                                            <p>폐암 유병자 비율</p>
+                                            <p>1인당 폐암 급여비</p>
+                                        </div>
+
+                                        <div class="right_txt">
+                                            <p class="right_txt_red">이완기 혈압</p>
+                                            <p>2.8%</p>
+                                            <p>11,817,960원</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="call_box">
+                                <div class="call_box_wrap">
+                                    <div class="flex_wrap">
+                                        <p>내 보장이 충분한지 알고싶다면?
+                                            <a href="#">내 보험 바로알기 <span></span></a>
+                                        </p>
+                                        <img src="../static/chart/assets/dounut.png" alt="">
+                                    </div>
+                                    <p class="call_box_txt mob_txt">※본 리포트는 고객님이 최근에 받은 건강검진 결과를 기준으로 분석한 결과이므로 현재의 건강상태와는 다를 수 있습니다.</p>
+                                </div>
+                            </section>
+
+                            <section class="chart_wrap radar">
+                                <div class="radar_chart_box">
+                                    <p class="gray_txt">폐암발병률을 높이는 <span>5가지</span> 요인 중</p>
+                                    <p class="red_txt"><span>이완기 혈압</span>이 가장 큰 발병요인이에요.</p>
+
+                                    <div class="chart_box">
+                                        <div class="circle_list">
+                                            <span>나</span>
+                                            <span>40대 여성</span>
+                                            <span>위험도</span>
+                                        </div>
+                                        <div class="labels">
+                                            <span>체질량 지수</span>
+                                            <span>수축기<br>혈압</span>
+                                            <span>공복혈당</span>
+                                            <span>총 콜레스테롤</span>
+                                            <span>이완기<br>혈압</span>
+                                        </div>
+                                        <canvas id="radarChart" width="186" height="186"></canvas>
+                                    </div>
+
+                                    <p class="green_txt">*바깥 선에 가까울 수록 위험도가 높아요</p>
+                                </div>
+                            </section>
+
+                            <section class="chart_wrap pie">
+                                <div class="pie_chart_box">
+                                    <p class="pie_chart_txt">40대 여성 36명 중 <span>한 명(2.8%)</span>은 폐암 환자</p>
+
+                                    <div class="chart_box">
+                                        <div class="circle_list">
+                                            <span>40대 여성</span>
+                                            <span>폐암 유병자</span>
+                                        </div>
+                                        <div class="labels">
+                                            <span>40대 여성의<br>폐암 유병률</span>
+                                        </div>
+                                        <canvas id="pieChart" width="186" height="186"></canvas>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <section class="graph_wrap">
+                                <div class="graph_box">
+                                    <div class="graph_con">
+                                        <p class="graph_tit">2022년 폐암의 <span>평균 급여비 현황</span></p>
+                                        <div class="flex_box">
+                                            <div class="right_txt">
+                                                <p>진료인원</p>
+                                                <p class="txt_green">74,430명</p>
+                                            </div>
+                                            <div class="left_txt">
+                                                <p>평균 요양급여비용</p>
+                                                <p class="txt_green">12,061,372원</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="graph_txt_box">
+                                        <p>폐암의  2022년 평균 진료비는 <span>11, 817,960원</span> 입니다. 폐암은 폐 내부에 감각세포가 없어 조기발견이 어려운 편이고, 암 중에서 사망률이 1위인 암으로 '침묵의 살인자'라고 불리고 있습니다. 건강한 일상을 지킬 수 있도록 미리 대비하세요.</p>
+                                        <a href="#">내 보험 바로알기 <span></span></a>
+                                    </div>
+                                    <p class="graph_txt_bot">
+                                        [출처 : 건강보험심사 평가원,2022년 진료비통계지표(진료일 기준)]<br>
+                                        ※평균 요양급여비용은 요양급비용에 대해 진료인원으로 나눈 금액입니다.<br>
+                                        ※본 리포트 결과의 위험도와 분석 결과는 참고용으로, 가입하신 보장내역에 대해 궁금하시다면 전문 컨설턴트와 상담 바랍니다.
+                                    </p>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                    <div class="bot_btn login_after pc_txt">
+                        <div class="flex_wrap login_after_con">
+                            <a href="#" class="share_btn modal_close">닫기</a>
+                            <a href="#" class="consulting_btn">상담 신청
+                                <span>어떻게 대비해야 할지 모르겠다면?</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="bot_txt2">
+            <p class="info_btn">알려드립니다.<span></span></p>
+        </div>
+
+        <section id="modalWrap2">
+            <div class="modalContent content">
+                <div class="modalBody">
+
+                    <button id="closeBtn2">
+                        <span class="hidden">닫기</span>
+                    </button>
+
+                    <div class="disease_con_box">
+                        <p>알려드립니다.<span></span></p>
+                        <ul class="guide_txt">
+                            <li>개인 건강 정보는 질환 예측 서비스 외에 다른 용도로 사용되지 않습니다.</li>
+                            <li>본 리포트 결과의  위험도와 분석 결과는 참고용으로, 가입하신 보장내역에 대해 궁금하시다면 전문 컨설턴트와 상담 바랍니다.</li>
+                            <li>본 리포트는 고객님의 최근에 받은 건강검진 결과를 기준으로 분석한 결과이므로 현재의 건강상태와는 다를 수 있습니다.</li>
+                            <li>건강 등수는 각 질환의 발병위험도를 산출한 값들의 평균이 80이상이면 F등급, 40이상 80미만이면 C등급, 20이상 40미만이면 B등급, 20 미만 A등급으로 표시하였습니다.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <div class="flex_wrap bot_btn login_before">
+            <div class="login_btn_con">
+                <p class="login_btn_con_txt">더 상세한 결과를 보고싶다면?</p>
+                <a class="login_btn_con_btn" href="#">로그인하고 확인하기</a>
+            </div>
+            <a href="#" class="consulting_btn">상담 신청
+                <span>어떻게 대비해야 할지 모르겠다면?</span>
+            </a>
+        </div>
+
+        <div class=" bot_btn login_after" style="display: none;">
+            <div class="flex_wrap login_after_con">
+                <a href="#" class="share_btn">리포트 공유</a>
+                <a href="#" class="consulting_btn">상담 신청
+                    <span>어떻게 대비해야 할지 모르겠다면?</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</body>
+
+</html>

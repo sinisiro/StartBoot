@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <!--<head>-->
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+<form name="form01" id="form01" method="post" onsubmit="return false;">
+    <script type="text/javascript" src="../static/mq/init.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+    <script>
+
+    </script>
+
+
+    <div class="container">
+        <div th:replace="fragments/bodyHeader :: bodyHeader" />
+        <!--    <p><a href="/test/fileUploadRest">파일첨부Rest</a></p>-->
+
+        <div class="jumbotron"> <h1>Rabbit MQ 메시지 발행/구독</h1>
+            <p class="lead">전송</p>
+            메시지 : <input type="text" id="message" name="val" class="inp-base" value="" placeholder="발행메시지">
+            <button id="btnServer" type="submit" class="btn btn-lg btn-primary">발행</button>
+            </p>
+
+
+            <p class="lead">Topic 구독</p>
+
+            토픽 : <input type="text" id="topicName" name="topicName" class="inp-base" value="kern.critical" placeholder="토픽">
+            <button id="btnRecv" type="submit" class="btn btn-lg btn-secondary">구독</button>
+
+            <p class="lead">Topic 전송</p>
+            토픽 : <input type="text" id="topic" name="topic" class="inp-base" value="kern.critical" placeholder="토픽">
+            메시지 : <input type="text" id="messageTopic" name="messageTopic" class="inp-base" value="" placeholder="발행메시지">
+            <button id="btnEmit" type="submit" class="btn btn-lg btn-primary">발행</button>
+            </p>
+
+
+
+            <ul id="messageList"></ul>
+
+            </p>
+
+        </div>
+
+        <div class="jumbotron"> <h1>Mosquitto MQ 메시지 발행</h1>
+            <p class="lead">Topic 전송</p>
+            토픽 : <input type="text" id="topicM" name="topic" class="inp-base" value="#" placeholder="토픽">
+            메시지 : <input type="text" id="messageTopicM" name="messageTopic" class="inp-base" value="" placeholder="발행메시지">
+            <button id="btnEmitM" type="submit" class="btn btn-lg btn-primary">발행</button>
+        </div>
+        <div th:replace="fragments/footer :: footer" /> </div> <!-- /container -->
+
+</form>
+</body>
+</html>

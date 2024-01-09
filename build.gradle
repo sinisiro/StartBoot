@@ -26,6 +26,17 @@ dependencies {
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1'
     implementation 'org.projectlombok:lombok:1.18.18'//mybatis
 	implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+	implementation group: 'com.rabbitmq', name: 'amqp-client', version: '5.16.0'	//rabbit MQ
+	implementation group: 'org.eclipse.paho', name: 'org.eclipse.paho.client.mqttv3', version: '1.2.5' //pacho MQTT Client
+
+	implementation group: 'org.springframework', name: 'spring-messaging', version: '5.3.18'		//websocket.
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	implementation 'org.springframework.boot:spring-boot-starter-activemq'		//jmstemplate
+	implementation "io.jsonwebtoken:jjwt:0.9.1"
+	// 다른 의존성
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+	implementation 'io.jsonwebtoken:jjwt-impl:0.11.2'
+	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.2'
 
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'

@@ -383,8 +383,6 @@ public class TotalTestController {
         return resultData;
     }
 
-
-
     /**
      * 파일업로드시 리사이징 샘플테스트(주행거리 블랙박스 테스트용)
      * 업로드시 javascript를 이용한 리사이징 테스트
@@ -492,6 +490,29 @@ public class TotalTestController {
         return "test/ToastUI";
     }
 
+    //24.01.05 Chart.js  테스트
+    @RequestMapping(value="/chartJS",  method = RequestMethod.GET)
+    public String chartJS(ModelAndView mav, HttpServletRequest req, HttpServletResponse res){
+
+        return "test/chartJS";
+    }
+
+    //24.01.05 Chart.js  테스트
+    @RequestMapping(value="/grade_m",  method = RequestMethod.GET)
+    public String grade_m(ModelAndView mav, HttpServletRequest req, HttpServletResponse res){
+
+        return "test/grade_m";
+    }
+
+    //23.05.03 clickjacking 공격 테스트
+    //https://ko.javascript.info/clickjacking
+    @RequestMapping(value="/clickjacking",  method = RequestMethod.GET)
+    public String clickjacking(ModelAndView mav, HttpServletRequest req, HttpServletResponse res){
+
+        return "test/clickjacking";
+    }
+
+    //23.05.03 clickjacking 공격 테스트
 
 
 }
