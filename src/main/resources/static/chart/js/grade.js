@@ -7,8 +7,6 @@ $(".login_btn_con_btn").click(function(event){
   isLoginClicked = true;
 });
 
-
-
 Chart.defaults.font.family = 'Noto Sans KR';
 
 var chartArea = document.getElementById('myChart1').getContext('2d');
