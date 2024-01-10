@@ -13,6 +13,8 @@ $(window).scroll(function() {
 });
 
 $(document).ready(function() {
+   $('.disease_chart2').css('display', 'none');
+
   $('.toggleCheckbox').change(function() {
     if ($(this).is(':checked')) {
       $('.disease_chart1').fadeOut('200', function() {
