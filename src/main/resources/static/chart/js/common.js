@@ -12,6 +12,9 @@ $(window).scroll(function() {
   }
 });
 
+
+
+
 $(document).ready(function() {
    $('.disease_chart2').css('display', 'none');
 
