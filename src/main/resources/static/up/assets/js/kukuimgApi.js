@@ -1,3 +1,18 @@
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+
 function __awaiter(thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -78,35 +93,35 @@ var pMap_1 = pMap;
 var default_1 = pMap;
 pMap_1.default = default_1;
 
-
+// internal misc utilities
 function values(object) {
     return Object.keys(object).map(name => object[name]);
 }
 function flat(arr) {
     return arr.reduce((a, b) => a.concat(b));
 }
+// export function trimNoNewLines(s: string): string {
+//   return s.replace(/^ +/, '').replace(/ +$/, '')
+// }
 
-
-
-
-
-
-
-
-
-
-
-
-
+// TODO: store variables from text file output and reuse them. example:
+// `
+// color=$(convert filename.png -format "%[pixel:p{0,0}]" info:foo.txt)
+// convert filename.png -alpha off -bordercolor $color -border 1 \
+//     \( +clone -fuzz 30% -fill none -floodfill +0+0 $color \
+//        -alpha extract -geometry 200% -blur 0x0.5 \
+//        -morphology erode square:1 -geometry 50% \) \
+//     -compose CopyOpacity -composite -shave 1 outputfilename.png
+// `
 /**
  * Generates a valid command line command from given `string[]` command. Works with a single command.
  */
 function arrayToCliOne(command) {
     return command
         .map(c => c + '')
-        
+        // if it contain spaces
         .map(c => (c.trim().match(/\s/)) ? `'${c}'` : c)
-        
+        // escape parenthesis
         .map(c => c.trim() === '(' ? '\\(' : c.trim() === ')' ? '\\)' : c)
         .join(' ');
 }
@@ -138,10 +153,10 @@ function cliToArrayOne(cliCommand) {
     const command = spaceIndexes
         .map((spaceIndex, i) => cliCommand.substring(i === 0 ? 0 : spaceIndexes[i - 1], spaceIndexes[i]).trim())
         .filter(s => !!s)
-        
+        // remove quotes
         .map(s => s.startsWith(`'`) ? s.substring(1, s.length) : s)
         .map(s => s.endsWith(`'`) ? s.substring(0, s.length - 1) : s)
-        
+        //  unescape parenthesis
         .map(s => s === `\\(` ? `(` : s === `\\)` ? `)` : s);
     return command;
 }
@@ -307,7 +322,7 @@ function getFileNameExtension(filePathOrUrl) {
     return s.substring(s.lastIndexOf('.') + 1, s.length);
 }
 
-
+// utilities related to HTML (img) elements
 /**
  * Will load given html img element src with the inline image content.
  * @param image the image to be loaded
@@ -448,7 +463,7 @@ function compareNumber$$1(img1, img2) {
  */
 function extractInfo$$1(img) {
     return __awaiter(this, void 0, void 0, function* () {
-        
+        // TODO: support several input images - we are already returning an array
         let name;
         let imgs;
         if (typeof img !== 'string') {
@@ -482,8 +497,8 @@ function getConfigureFolders$$1() {
         return folders;
     });
 }
-
-
+// has some heuristic information regarding features (not) supported by wasm-imagemagick, for example, image formats
+// heads up - all images spec/assets/to_rotate.* where converted using gimp unless explicitly saying otherwise
 /**
  * list of image formats that are known to be supported by wasm-imagemagick. See `spec/formatSpec.ts`
  */
@@ -491,9 +506,9 @@ const knownSupportedReadWriteImageFormats$$1 = [
     'jpg', 'png',
     'psd',
     'tiff', 'xcf', 'gif', 'bmp', 'tga', 'miff', 'ico', 'dcm', 'xpm', 'pcx',
-    
+    //  'pix', // gives error
     'fits',
-    
+    // 'djvu', // read only support
     'ppm',
     'pgm',
     'pfm',
@@ -737,7 +752,7 @@ function createCommonjsModule(fn, module) {
 
 var stackframe = createCommonjsModule(function (module, exports) {
 (function(root, factory) {
-    
+    // Universal Module Definition (UMD) to support AMD, CommonJS/Node.js, Rhino, and browsers.
 
     /* istanbul ignore next */
     {
@@ -845,7 +860,7 @@ var stackframe = createCommonjsModule(function (module, exports) {
 
 var errorStackParser = createCommonjsModule(function (module, exports) {
 (function(root, factory) {
-    
+    // Universal Module Definition (UMD) to support AMD, CommonJS/Node.js, Rhino, and browsers.
 
     /* istanbul ignore next */
     {
@@ -876,9 +891,9 @@ var errorStackParser = createCommonjsModule(function (module, exports) {
             }
         },
 
-        
+        // Separate line and column numbers from a string of the form: (URI:Line:Column)
         extractLocation: function ErrorStackParser$$extractLocation(urlLike) {
-            
+            // Fail-fast but return locations like "(native)"
             if (urlLike.indexOf(':') === -1) {
                 return [urlLike];
             }
@@ -895,7 +910,7 @@ var errorStackParser = createCommonjsModule(function (module, exports) {
 
             return filtered.map(function(line) {
                 if (line.indexOf('(eval ') > -1) {
-                    
+                    // Throw away eval information until we implement stacktrace.js/stackframe#8
                     line = line.replace(/eval code/g, 'eval').replace(/(\(eval at [^\()]*)|(\)\,.*$)/g, '');
                 }
                 var tokens = line.replace(/^\s+/, '').replace(/\(eval code/g, '(').split(/\s+/).slice(1);
@@ -919,13 +934,13 @@ var errorStackParser = createCommonjsModule(function (module, exports) {
             }, this);
 
             return filtered.map(function(line) {
-                
+                // Throw away eval information until we implement stacktrace.js/stackframe#8
                 if (line.indexOf(' > eval') > -1) {
                     line = line.replace(/ line (\d+)(?: > eval line \d+)* > eval\:\d+\:\d+/g, ':$1');
                 }
 
                 if (line.indexOf('@') === -1 && line.indexOf(':') === -1) {
-                    
+                    // Safari eval frames only have function names and nothing else
                     return new StackFrame({
                         functionName: line
                     });
@@ -998,7 +1013,7 @@ var errorStackParser = createCommonjsModule(function (module, exports) {
             return result;
         },
 
-        
+        // Opera 10.65+ Error.stack very similar to FF/Safari
         parseOpera11: function ErrorStackParser$$parseOpera11(error) {
             var filtered = error.stack.split('\n').filter(function(line) {
                 return !!line.match(FIREFOX_SAFARI_STACK_REGEXP) && !line.match(/^Error created at/);
@@ -1034,7 +1049,7 @@ var errorStackParser = createCommonjsModule(function (module, exports) {
 
 var stackGenerator = createCommonjsModule(function (module, exports) {
 (function(root, factory) {
-    
+    // Universal Module Definition (UMD) to support AMD, CommonJS/Node.js, Rhino, and browsers.
 
     /* istanbul ignore next */
     {
@@ -1052,7 +1067,7 @@ var stackGenerator = createCommonjsModule(function (module, exports) {
 
             var curr = arguments.callee;
             while (curr && stack.length < maxStackSize && curr['arguments']) {
-                
+                // Allow V8 optimizations
                 var args = new Array(curr['arguments'].length);
                 for (var i = 0; i < args.length; ++i) {
                     args[i] = curr['arguments'][i];
@@ -1175,9 +1190,9 @@ function normalize(aPath) {
       up++;
     } else if (up > 0) {
       if (part === '') {
-        
-        
-        
+        // The first part is blank if the path is absolute. Trying to go
+        // above the root is a no-op. Therefore we can remove all '..' parts
+        // directly after the root.
         parts.splice(i + 1, up);
         up = 0;
       } else {
@@ -1229,7 +1244,7 @@ function join(aRoot, aPath) {
     aRoot = aRootUrl.path || '/';
   }
 
-  
+  // `join(foo, '//www.example.org')`
   if (aPathUrl && !aPathUrl.scheme) {
     if (aRootUrl) {
       aPathUrl.scheme = aRootUrl.scheme;
@@ -1241,7 +1256,7 @@ function join(aRoot, aPath) {
     return aPath;
   }
 
-  
+  // `join('http://', 'www.example.com')`
   if (aRootUrl && !aRootUrl.host && !aRootUrl.path) {
     aRootUrl.host = aPath;
     return urlGenerate(aRootUrl);
@@ -1276,10 +1291,10 @@ function relative(aRoot, aPath) {
 
   aRoot = aRoot.replace(/\/$/, '');
 
-  
-  
-  
-  
+  // It is possible for the path to be above the root. In this case, simply
+  // checking whether the root is a prefix of the path won't work. Instead, we
+  // need to remove components from the root one by one, until either we find
+  // a prefix that fits, or we run out of components to remove.
   var level = 0;
   while (aPath.indexOf(aRoot + '/') !== 0) {
     var index = aRoot.lastIndexOf("/");
@@ -1287,9 +1302,9 @@ function relative(aRoot, aPath) {
       return aPath;
     }
 
-    
-    
-    
+    // If the only part of the root that is left is the scheme (i.e. http://,
+    // file:///, etc.), one or more slashes (/), or simply nothing at all, we
+    // have exhausted all components, so the path is not relative to the root.
     aRoot = aRoot.slice(0, index);
     if (aRoot.match(/^([^\/]+:\/)?\/*$/)) {
       return aPath;
@@ -1298,7 +1313,7 @@ function relative(aRoot, aPath) {
     ++level;
   }
 
-  
+  // Make sure we add a "../" for each component we removed from the root.
   return Array(level + 1).join("../") + aPath.substr(aRoot.length + 1);
 }
 exports.relative = relative;
@@ -1532,30 +1547,30 @@ exports.LEAST_UPPER_BOUND = 2;
  *     searching for, respectively, if the exact element cannot be found.
  */
 function recursiveSearch(aLow, aHigh, aNeedle, aHaystack, aCompare, aBias) {
-  
+  // This function terminates when one of the following is true:
   //
-  
+  //   1. We find the exact element we are looking for.
   //
-  
-  
+  //   2. We did not find the exact element, but we can return the index of
+  //      the next-closest element.
   //
-  
-  
+  //   3. We did not find the exact element, and there is no next-closest
+  //      element than the one we are searching for, so we return -1.
   var mid = Math.floor((aHigh - aLow) / 2) + aLow;
   var cmp = aCompare(aNeedle, aHaystack[mid], true);
   if (cmp === 0) {
-    
+    // Found the element we are looking for.
     return mid;
   }
   else if (cmp > 0) {
-    
+    // Our needle is greater than aHaystack[mid].
     if (aHigh - mid > 1) {
-      
+      // The element is in the upper half.
       return recursiveSearch(mid, aHigh, aNeedle, aHaystack, aCompare, aBias);
     }
 
-    
-    
+    // The exact needle element was not found in this haystack. Determine if
+    // we are in termination case (3) or (2) and return the appropriate thing.
     if (aBias == exports.LEAST_UPPER_BOUND) {
       return aHigh < aHaystack.length ? aHigh : -1;
     } else {
@@ -1563,13 +1578,13 @@ function recursiveSearch(aLow, aHigh, aNeedle, aHaystack, aCompare, aBias) {
     }
   }
   else {
-    
+    // Our needle is less than aHaystack[mid].
     if (mid - aLow > 1) {
-      
+      // The element is in the lower half.
       return recursiveSearch(aLow, mid, aNeedle, aHaystack, aCompare, aBias);
     }
 
-    
+    // we are in termination case (3) or (2) and return the appropriate thing.
     if (aBias == exports.LEAST_UPPER_BOUND) {
       return mid;
     } else {
@@ -1607,9 +1622,9 @@ exports.search = function search(aNeedle, aHaystack, aCompare, aBias) {
     return -1;
   }
 
-  
-  
-  
+  // We have found either the exact element, or the next-closest element than
+  // the one we are searching for. However, there may be more than one such
+  // element. Make sure we always return the smallest of these.
   while (index - 1 >= 0) {
     if (aCompare(aHaystack[index], aHaystack[index - 1], true) !== 0) {
       break;
@@ -1757,47 +1772,47 @@ var encode = function (number) {
  * failure.
  */
 var decode = function (charCode) {
-  var bigA = 65;     
-  var bigZ = 90;     
+  var bigA = 65;     // 'A'
+  var bigZ = 90;     // 'Z'
 
-  var littleA = 97;  
-  var littleZ = 122; 
+  var littleA = 97;  // 'a'
+  var littleZ = 122; // 'z'
 
-  var zero = 48;     
-  var nine = 57;     
+  var zero = 48;     // '0'
+  var nine = 57;     // '9'
 
-  var plus = 43;     
-  var slash = 47;    
+  var plus = 43;     // '+'
+  var slash = 47;    // '/'
 
   var littleOffset = 26;
   var numberOffset = 52;
 
-  
+  // 0 - 25: ABCDEFGHIJKLMNOPQRSTUVWXYZ
   if (bigA <= charCode && charCode <= bigZ) {
     return (charCode - bigA);
   }
 
-  
+  // 26 - 51: abcdefghijklmnopqrstuvwxyz
   if (littleA <= charCode && charCode <= littleZ) {
     return (charCode - littleA + littleOffset);
   }
 
-  
+  // 52 - 61: 0123456789
   if (zero <= charCode && charCode <= nine) {
     return (charCode - zero + numberOffset);
   }
 
-  
+  // 62: +
   if (charCode == plus) {
     return 62;
   }
 
-  
+  // 63: /
   if (charCode == slash) {
     return 63;
   }
 
-  
+  // Invalid base64 digit.
   return -1;
 };
 
@@ -1845,27 +1860,27 @@ var base64 = {
 
 
 
-
-
-
-
-
+// A single base 64 digit can contain 6 bits of data. For the base 64 variable
+// length quantities we use in the source map spec, the first bit is the sign,
+// the next four bits are the actual value, and the 6th bit is the
+// continuation bit. The continuation bit tells us whether there are more
+// digits in this value following this digit.
 //
-
-
-
-
-
+//   Continuation
+//   |    Sign
+//   |    |
+//   V    V
+//   101011
 
 var VLQ_BASE_SHIFT = 5;
 
-
+// binary: 100000
 var VLQ_BASE = 1 << VLQ_BASE_SHIFT;
 
-
+// binary: 011111
 var VLQ_BASE_MASK = VLQ_BASE - 1;
 
-
+// binary: 100000
 var VLQ_CONTINUATION_BIT = VLQ_BASE;
 
 /**
@@ -1907,8 +1922,8 @@ var encode$1 = function base64VLQ_encode(aValue) {
     digit = vlq & VLQ_BASE_MASK;
     vlq >>>= VLQ_BASE_SHIFT;
     if (vlq > 0) {
-      
-      
+      // There are still more digits in this value, so we must make sure the
+      // continuation bit is marked.
       digit |= VLQ_CONTINUATION_BIT;
     }
     encoded += base64.encode(digit);
@@ -1959,15 +1974,15 @@ var base64Vlq = {
  * http://opensource.org/licenses/BSD-3-Clause
  */
 
-
-
-
-
-
-
-
-
-
+// It turns out that some (most?) JavaScript engines don't self-host
+// `Array.prototype.sort`. This makes sense because C++ will likely remain
+// faster than JS when doing raw CPU-intensive sorting. However, when using a
+// custom comparator function, calling back and forth between the VM's C++ and
+// JIT'd JS is rather slow *and* loses JIT type information, resulting in
+// worse generated code for the comparator function than would be optimal. In
+// fact, when sorting with a comparator, these costs outweigh the benefits of
+// sorting in C++. By using our own JS-implemented Quick Sort (below), we get
+// a ~3500ms mean speed-up in `bench/bench.html`.
 
 /**
  * Swap the elements indexed by `x` and `y` in the array `ary`.
@@ -2010,34 +2025,34 @@ function randomIntInRange(low, high) {
  *        End index of the array
  */
 function doQuickSort(ary, comparator, p, r) {
-  
-  
-  
+  // If our lower bound is less than our upper bound, we (1) partition the
+  // array into two pieces and (2) recurse on each half. If it is not, this is
+  // the empty array and our base case.
 
   if (p < r) {
-    
+    // (1) Partitioning.
     //
-    
-    
-    
-    
-    
-    
+    // The partitioning chooses a pivot between `p` and `r` and moves all
+    // elements that are less than or equal to the pivot to the before it, and
+    // all the elements that are greater than it after it. The effect is that
+    // once partition is done, the pivot is in the exact place it will be when
+    // the array is put in sorted order, and it will not need to be moved
+    // again. This runs in O(n) time.
 
-    
-    
+    // Always choose a random pivot so that an input array which is reverse
+    // sorted does not cause O(n^2) running time.
     var pivotIndex = randomIntInRange(p, r);
     var i = p - 1;
 
     swap(ary, pivotIndex, r);
     var pivot = ary[r];
 
-    
-    
+    // Immediately after `j` is incremented in this loop, the following hold
+    // true:
     //
-    
+    //   * Every element in `ary[p .. i]` is less than or equal to the pivot.
     //
-    
+    //   * Every element in `ary[i+1 .. j-1]` is greater than the pivot.
     for (var j = p; j < r; j++) {
       if (comparator(ary[j], pivot) <= 0) {
         i += 1;
@@ -2048,7 +2063,7 @@ function doQuickSort(ary, comparator, p, r) {
     swap(ary, i + 1, j);
     var q = i + 1;
 
-    
+    // (2) Recurse on each half.
 
     doQuickSort(ary, comparator, p, q - 1);
     doQuickSort(ary, comparator, q + 1, r);
@@ -2104,35 +2119,35 @@ SourceMapConsumer.fromSourceMap = function(aSourceMap) {
  */
 SourceMapConsumer.prototype._version = 3;
 
-
-
-
-
-
-
-
+// `__generatedMappings` and `__originalMappings` are arrays that hold the
+// parsed mapping coordinates from the source map's "mappings" attribute. They
+// are lazily instantiated, accessed via the `_generatedMappings` and
+// `_originalMappings` getters respectively, and we only parse the mappings
+// and create these arrays once queried for a source location. We jump through
+// these hoops because there can be many thousands of mappings, and parsing
+// them is expensive, so we only want to do it if we must.
 //
-
+// Each object in the arrays is of the form:
 //
-
-
-
-
-
-
-
-
-
-
-
-
+//     {
+//       generatedLine: The line number in the generated code,
+//       generatedColumn: The column number in the generated code,
+//       source: The path to the original source file that generated this
+//               chunk of code,
+//       originalLine: The line number in the original source that
+//                     corresponds to this chunk of generated code,
+//       originalColumn: The column number in the original source that
+//                       corresponds to this chunk of generated code,
+//       name: The name of the original symbol which generated this chunk of
+//             code.
+//     }
 //
-
-
+// All properties except for `generatedLine` and `generatedColumn` can be
+// `null`.
 //
-
+// `_generatedMappings` is ordered by the generated positions.
 //
-
+// `_originalMappings` is ordered by the original positions.
 
 SourceMapConsumer.prototype.__generatedMappings = null;
 Object.defineProperty(SourceMapConsumer.prototype, '_generatedMappings', {
@@ -2251,10 +2266,10 @@ SourceMapConsumer.prototype.allGeneratedPositionsFor =
   function SourceMapConsumer_allGeneratedPositionsFor(aArgs) {
     var line = util.getArg(aArgs, 'line');
 
-    
-    
-    
-    
+    // When there is no exact match, BasicSourceMapConsumer.prototype._findMapping
+    // returns the index of the closest mapping less than the needle. By
+    // setting needle.originalColumn to 0, we thus find the last mapping for
+    // the given line, provided such a mapping exists.
     var needle = {
       source: util.getArg(aArgs, 'source'),
       originalLine: line,
@@ -2283,10 +2298,10 @@ SourceMapConsumer.prototype.allGeneratedPositionsFor =
       if (aArgs.column === undefined) {
         var originalLine = mapping.originalLine;
 
-        
-        
-        
-        
+        // Iterate until either we run out of mappings, or we run into
+        // a mapping for a different line than the one we found. Since
+        // mappings are sorted, this is guaranteed to find all mappings for
+        // the line we found.
         while (mapping && mapping.originalLine === originalLine) {
           mappings.push({
             line: util.getArg(mapping, 'generatedLine', null),
@@ -2299,10 +2314,10 @@ SourceMapConsumer.prototype.allGeneratedPositionsFor =
       } else {
         var originalColumn = mapping.originalColumn;
 
-        
-        
-        
-        
+        // Iterate until either we run out of mappings, or we run into
+        // a mapping for a different line than the one we were searching for.
+        // Since mappings are sorted, this is guaranteed to find all mappings for
+        // the line we are searching for.
         while (mapping &&
                mapping.originalLine === line &&
                mapping.originalColumn == originalColumn) {
@@ -2360,40 +2375,40 @@ function BasicSourceMapConsumer(aSourceMap) {
 
   var version = util.getArg(sourceMap, 'version');
   var sources = util.getArg(sourceMap, 'sources');
-  
-  
+  // Sass 3.3 leaves out the 'names' array, so we deviate from the spec (which
+  // requires the array) to play nice here.
   var names = util.getArg(sourceMap, 'names', []);
   var sourceRoot = util.getArg(sourceMap, 'sourceRoot', null);
   var sourcesContent = util.getArg(sourceMap, 'sourcesContent', null);
   var mappings = util.getArg(sourceMap, 'mappings');
   var file = util.getArg(sourceMap, 'file', null);
 
-  
-  
+  // Once again, Sass deviates from the spec and supplies the version as a
+  // string rather than a number, so we use loose equality checking here.
   if (version != this._version) {
     throw new Error('Unsupported version: ' + version);
   }
 
   sources = sources
     .map(String)
-    
-    
-    
+    // Some source maps produce relative source paths like "./foo.js" instead of
+    // "foo.js".  Normalize these first so that future comparisons will succeed.
+    // See bugzil.la/1090768.
     .map(util.normalize)
-    
-    
-    
-    
+    // Always ensure that absolute sources are internally stored relative to
+    // the source root, if the source root is absolute. Not doing this would
+    // be particularly problematic when the source root is a prefix of the
+    // source (valid, but why??). See github issue #199 and bugzil.la/1188982.
     .map(function (source) {
       return sourceRoot && util.isAbsolute(sourceRoot) && util.isAbsolute(source)
         ? util.relative(sourceRoot, source)
         : source;
     });
 
-  
-  
-  
-  
+  // Pass `true` below to allow duplicate names and sources. While source maps
+  // are intended to be compressed and deduplicated, the TypeScript compiler
+  // sometimes generates source maps with duplicates in them. See Github issue
+  // #72 and bugzil.la/889492.
   this._names = ArraySet$1.fromArray(names.map(String), true);
   this._sources = ArraySet$1.fromArray(sources, true);
 
@@ -2424,10 +2439,10 @@ BasicSourceMapConsumer.fromSourceMap =
                                                             smc.sourceRoot);
     smc.file = aSourceMap._file;
 
-    
-    
-    
-    
+    // Because we are modifying the entries (by converting string sources and
+    // names to indices into the sources and names ArraySets), we have to make
+    // a copy of the entry or else bad things happen. Shared mutable state
+    // strikes again! See github issue #191.
 
     var generatedMappings = aSourceMap._mappings.toArray().slice();
     var destGeneratedMappings = smc.__generatedMappings = [];
@@ -2521,11 +2536,11 @@ BasicSourceMapConsumer.prototype._parseMappings =
         mapping = new Mapping();
         mapping.generatedLine = generatedLine;
 
-        
-        
-        
-        
-        
+        // Because each offset is encoded relative to the previous one,
+        // many segments often have the same encoding. We can exploit this
+        // fact by caching the parsed variable length fields of each segment,
+        // allowing us to avoid a second parse if we encounter the same
+        // segment again.
         for (end = index; end < length; end++) {
           if (this._charIsMappingSeparator(aStr, end)) {
             break;
@@ -2556,27 +2571,27 @@ BasicSourceMapConsumer.prototype._parseMappings =
           cachedSegments[str] = segment;
         }
 
-        
+        // Generated column.
         mapping.generatedColumn = previousGeneratedColumn + segment[0];
         previousGeneratedColumn = mapping.generatedColumn;
 
         if (segment.length > 1) {
-          
+          // Original source.
           mapping.source = previousSource + segment[1];
           previousSource += segment[1];
 
-          
+          // Original line.
           mapping.originalLine = previousOriginalLine + segment[2];
           previousOriginalLine = mapping.originalLine;
-          
+          // Lines are stored 0-based
           mapping.originalLine += 1;
 
-          
+          // Original column.
           mapping.originalColumn = previousOriginalColumn + segment[3];
           previousOriginalColumn = mapping.originalColumn;
 
           if (segment.length > 4) {
-            
+            // Original name.
             mapping.name = previousName + segment[4];
             previousName += segment[4];
           }
@@ -2603,10 +2618,10 @@ BasicSourceMapConsumer.prototype._parseMappings =
 BasicSourceMapConsumer.prototype._findMapping =
   function SourceMapConsumer_findMapping(aNeedle, aMappings, aLineName,
                                          aColumnName, aComparator, aBias) {
-    
-    
-    
-    
+    // To return the position we are searching for, we must first find the
+    // mapping for the given position and then return the opposite position it
+    // points to. Because the mappings are sorted, we can use binary search to
+    // find the best mapping.
 
     if (aNeedle[aLineName] <= 0) {
       throw new TypeError('Line must be greater than or equal to 1, got '
@@ -2629,10 +2644,10 @@ BasicSourceMapConsumer.prototype.computeColumnSpans =
     for (var index = 0; index < this._generatedMappings.length; ++index) {
       var mapping = this._generatedMappings[index];
 
-      
-      
-      
-      
+      // Mappings do not contain a field for the last generated columnt. We
+      // can come up with an optimistic estimate, however, by assuming that
+      // mappings are contiguous (i.e. given two consecutive mappings, the
+      // first mapping ends where the second one starts).
       if (index + 1 < this._generatedMappings.length) {
         var nextMapping = this._generatedMappings[index + 1];
 
@@ -2642,7 +2657,7 @@ BasicSourceMapConsumer.prototype.computeColumnSpans =
         }
       }
 
-      
+      // The last mapping for each line spans the entire line.
       mapping.lastGeneratedColumn = Infinity;
     }
   };
@@ -2750,10 +2765,10 @@ BasicSourceMapConsumer.prototype.sourceContentFor =
     var url;
     if (this.sourceRoot != null
         && (url = util.urlParse(this.sourceRoot))) {
-      
-      
-      
-      
+      // XXX: file:// URIs and absolute paths lead to unexpected behavior for
+      // many users. We can help them out when they expect file:// URIs to
+      // behave like it would if they were running a local HTTP server. See
+      // https://bugzilla.mozilla.org/show_bug.cgi?id=885597.
       var fileUriAbsPath = aSource.replace(/^file:\/\//, "");
       if (url.scheme == "file"
           && this._sources.has(fileUriAbsPath)) {
@@ -2766,10 +2781,10 @@ BasicSourceMapConsumer.prototype.sourceContentFor =
       }
     }
 
-    
-    
-    
-    
+    // This function is used recursively from
+    // IndexedSourceMapConsumer.prototype.sourceContentFor. In that case, we
+    // don't want to throw if we can't find the source - we just want to
+    // return null, so we provide a flag to exit gracefully.
     if (nullOnMissing) {
       return null;
     }
@@ -2915,8 +2930,8 @@ function IndexedSourceMapConsumer(aSourceMap) {
   };
   this._sections = sections.map(function (s) {
     if (s.url) {
-      
-      
+      // The url field will require support for asynchronicity.
+      // See https://github.com/mozilla/source-map/issues/16
       throw new Error('Support for url field in sections not implemented.');
     }
     var offset = util.getArg(s, 'offset');
@@ -2931,8 +2946,8 @@ function IndexedSourceMapConsumer(aSourceMap) {
 
     return {
       generatedOffset: {
-        
-        
+        // The offset fields are 0-based, but we use 1-based indices when
+        // encoding/decoding from VLQ.
         generatedLine: offsetLine + 1,
         generatedColumn: offsetColumn + 1
       },
@@ -2986,8 +3001,8 @@ IndexedSourceMapConsumer.prototype.originalPositionFor =
       generatedColumn: util.getArg(aArgs, 'column')
     };
 
-    
-    
+    // Find the section containing the generated position we're trying to map
+    // to an original position.
     var sectionIndex = binarySearch.search(needle, this._sections,
       function(needle, section) {
         var cmp = needle.generatedLine - section.generatedOffset.generatedLine;
@@ -3073,8 +3088,8 @@ IndexedSourceMapConsumer.prototype.generatedPositionFor =
     for (var i = 0; i < this._sections.length; i++) {
       var section = this._sections[i];
 
-      
-      
+      // Only consider this section if the requested source is in the list of
+      // sources of the consumer.
       if (section.consumer.sources.indexOf(util.getArg(aArgs, 'source')) === -1) {
         continue;
       }
@@ -3124,10 +3139,10 @@ IndexedSourceMapConsumer.prototype._parseMappings =
         this._names.add(name);
         name = this._names.indexOf(name);
 
-        
-        
-        
-        
+        // The mappings coming from the consumer for the section have
+        // generated positions relative to the start of the section, so we
+        // need to offset them to be relative to the start of the concatenated
+        // generated file.
         var adjustedMapping = {
           source: source,
           generatedLine: mapping.generatedLine +
@@ -3162,7 +3177,7 @@ var sourceMapConsumer = {
 
 var stacktraceGps = createCommonjsModule(function (module, exports) {
 (function(root, factory) {
-    
+    // Universal Module Definition (UMD) to support AMD, CommonJS/Node.js, Rhino, and browsers.
 
     /* istanbul ignore next */
     {
@@ -3221,24 +3236,24 @@ var stacktraceGps = createCommonjsModule(function (module, exports) {
 
     function _findFunctionName(source, lineNumber/*, columnNumber*/) {
         var syntaxes = [
-            
+            // {name} = function ({args}) TODO args capture
             /['"]?([$_A-Za-z][$_A-Za-z0-9]*)['"]?\s*[:=]\s*function\b/,
-            
+            // function {name}({args}) m[1]=name m[2]=args
             /function\s+([^('"`]*?)\s*\(([^)]*)\)/,
-            
+            // {name} = eval()
             /['"]?([$_A-Za-z][$_A-Za-z0-9]*)['"]?\s*[:=]\s*(?:eval|new Function)\b/,
-            
+            // fn_name() {
             /\b(?!(?:if|for|switch|while|with|catch)\b)(?:(?:static)\s+)?(\S+)\s*\(.*?\)\s*\{/,
-            
+            // {name} = () => {
             /['"]?([$_A-Za-z][$_A-Za-z0-9]*)['"]?\s*[:=]\s*\(.*?\)\s*=>/
         ];
         var lines = source.split('\n');
 
-        
+        // Walk backwards in the source lines until we find the line which matches one of the patterns above
         var code = '';
         var maxLines = Math.min(lineNumber, 20);
         for (var i = 0; i < maxLines; ++i) {
-            
+            // lineNo is 1-based, source[] is 0-based
             var line = lines[lineNumber - i - 1];
             var commentPos = line.indexOf('//');
             if (commentPos >= 0) {
@@ -3286,7 +3301,7 @@ var stacktraceGps = createCommonjsModule(function (module, exports) {
         var sourceMappingUrlRegExp = /\/\/[#@] ?sourceMappingURL=([^\s'"]+)\s*$/mg;
         var lastSourceMappingUrl;
         var matchSourceMappingUrl;
-        while (matchSourceMappingUrl = sourceMappingUrlRegExp.exec(source)) { 
+        while (matchSourceMappingUrl = sourceMappingUrlRegExp.exec(source)) { // jshint ignore:line
             lastSourceMappingUrl = matchSourceMappingUrl[1];
         }
         if (lastSourceMappingUrl) {
@@ -3304,14 +3319,14 @@ var stacktraceGps = createCommonjsModule(function (module, exports) {
             });
 
             if (loc.source) {
-                
+                // cache mapped sources
                 var mappedSource = sourceMapConsumer$$1.sourceContentFor(loc.source);
                 if (mappedSource) {
                     sourceCache[loc.source] = mappedSource;
                 }
 
                 resolve(
-                    
+                    // given stackframe and source location, update stackframe
                     new StackFrame({
                         functionName: loc.name || stackframe$$1.functionName,
                         args: stackframe$$1.args,
@@ -3356,8 +3371,8 @@ var stacktraceGps = createCommonjsModule(function (module, exports) {
                     reject(new Error('Cannot make network requests in offline mode'));
                 } else {
                     if (isDataUrl) {
-                        
-                        
+                        // data URLs can have parameters.
+                        // see http://tools.ietf.org/html/rfc2397
                         var supportedEncodingRegexp =
                             /^data:application\/json;([\w=:"-]+;)*base64,/;
                         var match = location.match(supportedEncodingRegexp);
@@ -3372,7 +3387,7 @@ var stacktraceGps = createCommonjsModule(function (module, exports) {
                         }
                     } else {
                         var xhrPromise = this.ajax(location, {method: 'get'});
-                        
+                        // Cache the Promise to prevent duplicate in-flight requests
                         this.sourceCache[location] = xhrPromise;
                         xhrPromise.then(resolve, reject);
                     }
@@ -3445,7 +3460,7 @@ var stacktraceGps = createCommonjsModule(function (module, exports) {
                     var lineNumber = stackframe$$1.lineNumber;
                     var columnNumber = stackframe$$1.columnNumber;
                     var guessedFunctionName = _findFunctionName(source, lineNumber, columnNumber);
-                    
+                    // Only replace functionName if we found something
                     if (guessedFunctionName) {
                         resolve(new StackFrame({
                             functionName: guessedFunctionName,
@@ -3499,7 +3514,7 @@ var stacktraceGps = createCommonjsModule(function (module, exports) {
 
 var stacktrace = createCommonjsModule(function (module, exports) {
 (function(root, factory) {
-    
+    // Universal Module Definition (UMD) to support AMD, CommonJS/Node.js, Rhino, and browsers.
 
     /* istanbul ignore next */
     {
@@ -3508,7 +3523,7 @@ var stacktrace = createCommonjsModule(function (module, exports) {
 }(commonjsGlobal, function StackTrace(ErrorStackParser, StackGenerator, StackTraceGPS) {
     var _options = {
         filter: function(stackframe) {
-            
+            // Filter out stackframes for this library by default
             return (stackframe.functionName || '').indexOf('StackTrace$$') === -1 &&
                 (stackframe.functionName || '').indexOf('ErrorStackParser$$') === -1 &&
                 (stackframe.functionName || '').indexOf('StackTraceGPS$$') === -1 &&
@@ -3519,7 +3534,7 @@ var stacktrace = createCommonjsModule(function (module, exports) {
 
     var _generateError = function StackTrace$$GenerateError() {
         try {
-            
+            // Error must be thrown to get stack in IE
             throw new Error();
         } catch (err) {
             return err;
@@ -3639,7 +3654,7 @@ var stacktrace = createCommonjsModule(function (module, exports) {
             if (typeof fn !== 'function') {
                 throw new Error('Cannot instrument non-function object');
             } else if (typeof fn.__stacktraceOriginalFn === 'function') {
-                
+                // Already instrumented, return given Function
                 return fn;
             }
 
@@ -3671,7 +3686,7 @@ var stacktrace = createCommonjsModule(function (module, exports) {
             } else if (typeof fn.__stacktraceOriginalFn === 'function') {
                 return fn.__stacktraceOriginalFn;
             } else {
-                
+                // Function not instrumented, return original
                 return fn;
             }
         },
@@ -3699,7 +3714,7 @@ var stacktrace = createCommonjsModule(function (module, exports) {
                 };
                 req.open('post', url);
 
-                
+                // Set request headers
                 req.setRequestHeader('Content-Type', 'application/json');
                 if (requestOptions && typeof requestOptions.headers === 'object') {
                     var headers = requestOptions.headers;
@@ -3744,16 +3759,16 @@ function call(inputFiles, command) {
         args: command,
         requestNumber: magickWorkerPromisesKey,
     };
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    // let transfer = [];
+    // for (let file of request.files) {
+    //   if(file.content instanceof ArrayBuffer)
+    //   {
+    //     transfer.push(file.content)
+    //   }
+    //   else{
+    //     transfer.push(file.content.buffer)
+    //   }
+    // }
     const promise = CreatePromiseEvent();
     magickWorkerPromises[magickWorkerPromisesKey] = promise;
     magickWorker.postMessage(request); //,transfer)
@@ -3780,23 +3795,23 @@ function GetCurrentUrlDifferentFilename(currentUrl, fileName) {
     return ChangeUrl(currentUrl, fileName);
 }
 let currentJavascriptURL = './kukuimgApi.js';
-
-
-
-
-
-
-
-
-
-
-
-
+// // instead of doing the sane code of being able to just use import.meta.url 
+// // (Edge doesn't work) (safari mobile, chrome, opera, firefox all do)
+// // 
+// // I will use stacktrace-js library to get the current file name
+// //
+// try {
+//   // @ts-ignore
+//   let packageUrl = import.meta.url;
+//   currentJavascriptURL = packageUrl;
+// } catch (error) {
+//   // eat
+// }
 function GenerateStackAndGetPathAtDepth(depth) {
     try {
         let stacktrace$$1 = stacktrace.getSync();
         let filePath = stacktrace$$1[depth].fileName;
-        
+        // if the stack trace code doesn't return a path separator
         if (filePath !== undefined && filePath.indexOf('/') === -1 && filePath.indexOf('\\') === -1) {
             return undefined;
         }
@@ -3807,16 +3822,16 @@ function GenerateStackAndGetPathAtDepth(depth) {
     }
 }
 function GetCurrentFileURLHelper3() {
-    
-    
-    
-    
-    
+    // 3rd call site didn't work, so I made this complicated maze of helpers.. 
+    // Pulling the filename from the 3rd call site of the stacktrace to get the full path
+    // to the module. The first index is inconsistent across browsers and does not return 
+    // the full path in Safari and results in the worker failing to resolve. 
+    // I am preferring to do depth 0 first, as that will ensure people that do minification still works
     let filePath = GenerateStackAndGetPathAtDepth(0);
     if (filePath === undefined) {
         filePath = GenerateStackAndGetPathAtDepth(2);
     }
-    
+    // if the stack trace code messes up 
     if (filePath === undefined) {
         filePath = './kukuimgApi.js';
     }
@@ -3834,15 +3849,15 @@ function GetCurrentFileURL() {
 currentJavascriptURL = GetCurrentFileURL();
 const magickWorkerUrl = GetCurrentUrlDifferentFilename(currentJavascriptURL, 'kukuimg.js');
 function GenerateMagickWorkerText(magickUrl) {
-    
-    
-    
+    // generates code for the following
+    // var magickJsCurrentPath = 'magickUrl';
+    // importScripts(magickJsCurrentPath);
     return "var magickJsCurrentPath = '" + magickUrl + "';\n" +
         'importScripts(magickJsCurrentPath);';
 }
 let magickWorker;
 if (currentJavascriptURL.startsWith('http')) {
-    
+    // if worker is in a different domain fetch it, and run it
     magickWorker = new Worker(window.URL.createObjectURL(new Blob([GenerateMagickWorkerText(magickWorkerUrl)])));
 }
 else {
@@ -3850,7 +3865,7 @@ else {
 }
 const magickWorkerPromises = {};
 let magickWorkerPromisesKey = 1;
-
+// handle responses as they stream in after being outputFiles by image magick
 magickWorker.onmessage = e => {
     const response = e.data;
     const promise = magickWorkerPromises[response.requestNumber];

@@ -497,7 +497,7 @@ public class TotalTestController {
         return "test/chartJS";
     }
 
-    //24.01.05 Chart.js  테스트
+    //24.01.05 Chart.js  질병예측에서 준 사이트 테스트
     @RequestMapping(value="/grade_m",  method = RequestMethod.GET)
     public String grade_m(ModelAndView mav, HttpServletRequest req, HttpServletResponse res){
 

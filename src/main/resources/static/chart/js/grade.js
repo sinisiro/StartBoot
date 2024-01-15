@@ -1,11 +1,13 @@
 // 로그인하고 확인하기
 var isLoginClicked = false;
+$(".login_before").hide();
 
-$(".login_btn_con_btn").click(function(event){
-  event.preventDefault();
-  $(".login_before").hide();
-  isLoginClicked = true;
-});
+//$(".login_btn_con_btn").click(function(event){
+//  event.preventDefault();
+//  $(".login_before").hide();
+//  isLoginClicked = true;
+//});
+
 
 Chart.defaults.font.family = 'Noto Sans KR';
 

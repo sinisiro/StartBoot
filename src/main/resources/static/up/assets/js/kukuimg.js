@@ -1,4 +1,4 @@
-
+// This file helps make the compiled js file be imported as a web worker by the src/magickApi.ts file
 
 const stdout = []
 const stderr = []
@@ -10,7 +10,7 @@ function ChangeUrl(url, fileName)
     splitUrl[splitUrl.length -1] = fileName
     return splitUrl.join('/')
 }
-
+// const magickJsCurrentPath = 'https://knicknic.github.io/wasm-imagemagick/magick.js';
 function GetCurrentUrlDifferentFilename(fileName)
 {
     return ChangeUrl(magickJsCurrentPath, fileName)
@@ -38,7 +38,7 @@ if (typeof Module == 'undefined') {
       Module.locateFile = GetCurrentUrlDifferentFilename;
   }
 
-  
+  // see https://kripken.github.io/emscripten-site/docs/api_reference/module.html
   Module.onRuntimeInitialized = function () {
     FS.mkdir('/pictures')
     FS.currentPath = '/pictures'
@@ -53,7 +53,7 @@ processFiles = function () {
     return
   }
 
-  
+  // clean up stdout, stderr and exitCode
   stdout.splice(0, stdout.length)
   stderr.splice(0, stderr.length)
   exitCode = undefined
@@ -63,7 +63,7 @@ processFiles = function () {
       let fileData = file.content
       if(fileData instanceof ArrayBuffer)
       {
-        
+        // fileData = new DataView(fileData)
         fileData = new Uint8Array(fileData);
       }
       FS.writeFile(file.name, fileData)
@@ -74,8 +74,8 @@ processFiles = function () {
     }
     catch (e) { }
     for (let file of message.files) {
-      
-      
+      // cleanup source files
+      // mogrify then output files have same name, so skip
       if (message.args[0] != 'mogrify') {
         FS.unlink(file.name)
       }
@@ -89,7 +89,7 @@ processFiles = function () {
       let processed = {}
       processed.name = destFilename
       let read = FS.readFile(destFilename)
-      
+      // cleanup read file
       FS.unlink(destFilename)
             
       if('transferable' in message)

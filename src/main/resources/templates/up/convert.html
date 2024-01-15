@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui"/>
+    <title>kukudocs</title>
+    <script type="module">
+        import * as kukuimg from "../static/up/assets/js/kukuimgApi.js";
+        window.kukuimg = kukuimg;
+    </script>
+    <script type="text/javascript" src="../static/up/assets/js/jquery.js"></script>
+    <script type="text/javascript" src="../static/up/assets/js/uploader.bundle.js"></script>
+</head>
+<body>
+
+<div class="kk-uploader">
+    <input type="file" name="file" id="inputFile" />
+<!--    <input type="button" name="go" id="go" value="go"/>-->
+
+    <img src="" id="inputImg" style="width:500px;"/>
+</div>
+<script type="text/javascript">
+
+    var uploader = new kkUploader("none",{
+        url: "/api/upload",
+        // upload ----------------------- 
+        method: "post",
+        maxFiles : 10,
+        maxFilesize : 1024, //MB
+        paramName : "file",
+        headers : null,
+        params : [],
+
+        uploadMultiple : false,
+
+        // image convert-----------------------
+        quality: "50",
+        resize: 3000,
+        targetExt : "jpg",
+        acceptedExt : ['bmp', 'jpg', 'png', 'jpeg', 'tif', 'gif', 'tiff'],
+        preview : true,
+
+        // thumbnail -----------------------
+        createImageThumbnails : false,
+        thumbnailWidth : 100,
+        thumbnailHeight : 100,
+
+        // callback -----------------------
+        completeCallback : function(){
+            console.log("completeCallback");
+
+        },
+        uploadCallback : function(data){
+            console.log("uploadCallback");
+
+        }
+    });
+
+    var browserVer = 0;
+    var isSafari = false;
+    var agent = navigator.userAgent.toLowerCase();
+    if(agent.indexOf('safari') > -1){
+        isSafari = true;
+    }else{
+        var raw = agent.match(/chrom(e|ium)\/([0-9]+)\./);
+        if(raw){
+            browserVer = parseInt(raw[2], 10);
+        }
+    }
+
+  console.log("####브라우저 : " + agent);
+    //if((browserVer > 96) || isSafari){
+    if(1==2){
+        $("#inputFile").on("change",async function(e){
+            let file = e.target.files[0];
+            console.log(file);
+            console.log("####압축방식");
+            let filename = file.name;
+            let filedot = filename.lastIndexOf(".");
+            const reader = new FileReader();
+            reader.onload = async function () {
+                let result = await uploader.imgConvert(file, new Uint8Array(reader.result));
+                console.log("####압축방식2");
+                console.log(result);
+                // const content2 = new Blob([content], { type: "image/jpeg" });
+                var encodedUri = window.URL.createObjectURL(result.data);
+
+                $("#inputImg").attr("src",encodedUri);
+            };
+            reader.readAsArrayBuffer(file);
+        });
+    }else{
+        $("#inputFile").on("change",function(e){
+            let file = e.target.files[0];
+            console.log("####기존방식");
+            console.log(file);
+            let filename = file.name;
+            let filedot = filename.lastIndexOf(".");
+            const reader = new FileReader();
+            reader.onload = function (ee) {
+
+                var base64 = reader.result;
+                uploader.imgResize(file, base64, function(result){
+                    console.log(result);
+                    var encodedUri = window.URL.createObjectURL(result.data);
+
+                    $("#inputImg").attr("src",encodedUri);
+                });
+                
+            };
+            reader.readAsArrayBuffer(file);
+        });
+    }
+ 
+</script>
+
+</body>

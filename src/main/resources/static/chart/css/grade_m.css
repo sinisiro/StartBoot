@@ -94,7 +94,7 @@
 
 .call_box .flex_wrap { position: relative; padding: 28px 0 28px; align-items: flex-start; gap: 18px; border-radius: 10px; background: #EFF1FD; box-sizing: border-box; /* max-width: 1200px; */margin: 0 auto; justify-content: center; }
 
-.call_box img { width: 64px; height: 64px; display: none; }
+    .call_box img { width: 64px; height: 64px; display: none; }
 
 .call_box p { color: var(--text-sub-title, #252525); font-size: 1.7rem; font-weight: 700; line-height: 24px; letter-spacing: -0.7px; display: flex; flex-direction: row; align-items: flex-start; gap: 16px; margin-top: 3px; }
 

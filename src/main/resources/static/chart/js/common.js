@@ -15,9 +15,15 @@ $(window).scroll(function() {
 
 
 
+
+
 $(document).ready(function() {
-   $('.disease_chart2').css('display', 'none');
+   $('.disease_chart2').css('display', 'none');     //MS . 화면을 그린 후에 안보이게 처리 .css에서도 기본 display:none 을 없애준다.
    console.log("hello");
+
+   $('#modalWrap').css('display', 'none');
+   $('body').css('overflow', 'inherit');
+
   $('.toggleCheckbox').change(function() {
     if ($(this).is(':checked')) {
       $('.disease_chart1').fadeOut('200', function() {
@@ -70,6 +76,10 @@ $(document).ready(function(){
 
 // 팝업
 $(document).ready(function(){
+
+
+
+
   $('.disease_list ul li').click(function() {
     $('#modalWrap').css('display', 'block');
     $('body').css('overflow', 'hidden');

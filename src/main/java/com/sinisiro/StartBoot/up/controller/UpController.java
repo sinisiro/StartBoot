@@ -17,6 +17,9 @@ import java.time.format.DateTimeFormatter;
 @RequiredArgsConstructor
 @Slf4j
 @RequestMapping("/up")
+/**
+ * [24.1.11 매체효율화 쿠쿠닥스 업로드 모듈 테스트
+ */
 public class UpController {
 
     @RequestMapping(value="/init",  method = RequestMethod.GET)
@@ -30,6 +33,19 @@ public class UpController {
         String formatedNow = now.format(formatter);
 
         return "up/index";
+    }
+
+    @RequestMapping(value="/convert",  method = RequestMethod.GET)
+    public String convert(ModelAndView mav, HttpServletRequest req, HttpServletResponse res){
+
+        // 현재 시간
+        LocalTime now = LocalTime.now();
+        // 포맷 정의하기
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH시 mm분 ss초");
+        // 포맷 적용하기
+        String formatedNow = now.format(formatter);
+
+        return "up/convert";
     }
 
     @RequestMapping(value="/api/upload",  method = RequestMethod.POST)
