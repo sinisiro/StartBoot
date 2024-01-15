@@ -18,6 +18,7 @@ $(document).ready(function() {
 
    $('#modalWrap').css('display', 'none');
    $('body').css('overflow', 'inherit');
+   console.log("hello2");
 
   $('.toggleCheckbox').change(function() {
     if ($(this).is(':checked')) {
